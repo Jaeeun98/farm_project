@@ -13,6 +13,9 @@ const config: Config = {
         text_default: "#3A3A3A",
         text_sub: "#979797",
       },
+      backgroundImage: {
+        banner_img: "url('/images/banner.png')",
+      },
     },
   },
   plugins: [],
