@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Search from "./common/search";
 
 const filterArr = ["농장", "목장", "체험"];
 
@@ -27,6 +28,7 @@ export default function MainSearch() {
           </li>
         ))}
       </ul>
+      <Search />
     </div>
   );
 }
