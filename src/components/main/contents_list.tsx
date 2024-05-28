@@ -1,4 +1,5 @@
 import Image from "next/image";
+import StarScore from "../common/star_score";
 
 const testData = [
   {
@@ -41,6 +42,7 @@ const testData = [
 
 const sub_text_style = `text-[12px] text-text_sub my-1`;
 const default_text_style = `text-text_default font-bold my-1`;
+
 export default function ContentsList() {
   return (
     <ul className="flex w-full justify-between">
@@ -57,15 +59,7 @@ export default function ContentsList() {
           <p className={`${default_text_style} text-[16px]`}>{item.name}</p>
           <p className={`${sub_text_style}`}>{item.addr}</p>
           <div className="flex items-center">
-            <span className="flex bg-point_color rounded-3xl px-2 py-1 w-[50px] h-[21px] justify-between items-center me-2">
-              <Image
-                src="/images/icon/star.png"
-                alt="star_icon"
-                width={10.25}
-                height={10}
-              />
-              <span className="text-[12px] text-white">{item.score}</span>
-            </span>
+            <StarScore score={item.score} />
             <span className={`${sub_text_style}`}>{item.num}명</span>
           </div>
           <p className={`${default_text_style} text-[20px] text-right`}>
