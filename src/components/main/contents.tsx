@@ -12,7 +12,7 @@ export default function Contents() {
   };
 
   return (
-    <section className="px-16 py-12">
+    <section className="px-layout_px py-12">
       <h2 className="text-[24px] font-bold">추천 체험지</h2>
       <FilterButton
         selectFilter={selectFilter}

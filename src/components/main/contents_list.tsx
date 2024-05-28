@@ -1,5 +1,5 @@
 import Image from "next/image";
-import StarScore from "../common/star_score";
+import StarScore from "../ui/star_score";
 
 const testData = [
   {

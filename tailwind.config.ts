@@ -17,6 +17,12 @@ const config: Config = {
       backgroundImage: {
         banner_img: "url('/images/banner.png')",
       },
+      padding: {
+        layout_px: "4rem",
+      },
+      height: {
+        header_height: "80px",
+      },
     },
   },
   plugins: [],

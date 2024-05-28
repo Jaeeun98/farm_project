@@ -4,7 +4,11 @@ const InputBox = `relative bg-sub_color rounded-sm  flex items-center`;
 const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
 const ImgStyle = `absolute left-2`;
 
-export default function Search() {
+interface Props {
+  detail?: boolean; //디테일 페이지의 컴포넌트인지 구분
+}
+
+export default function Search({ detail = false }: Props) {
   return (
     <div className="flex text-[14px] w-full h-[50%] gap-4 items-center p-6">
       <div className={`${InputBox} w-[50%]`}>
@@ -40,7 +44,7 @@ export default function Search() {
         <input className={InputStyle} type="number" placeholder="인원" />
       </div>
       <button className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
-        검색
+        {detail ? "재검색" : "검색"}
       </button>
     </div>
   );
