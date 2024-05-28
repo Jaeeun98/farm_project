@@ -1,12 +1,13 @@
-import Banner from "@/components/banner";
+import Banner from "@/components/main/banner";
+import Contents from "@/components/main/contents";
 import Header from "@/components/header";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
       <Header />
       <Banner />
+      <Contents />
     </main>
   );
 }

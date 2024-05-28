@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         point_color: "#0788FF",
+        sub_color: "#F6F6F6",
         text_default: "#3A3A3A",
         text_sub: "#979797",
       },

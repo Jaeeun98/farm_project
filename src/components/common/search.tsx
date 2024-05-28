@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const InputBox = `relative bg-[#f6f6f6] rounded-sm  flex items-center`;
-const InputStyle = `bg-[#f6f6f6] w-full ps-9 pe-3 py-2`;
+const InputBox = `relative bg-sub_color rounded-sm  flex items-center`;
+const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
 const ImgStyle = `absolute left-2`;
 
 export default function Search() {
@@ -24,7 +24,7 @@ export default function Search() {
         />
       </div>
       <input
-        className={`bg-[#f6f6f6] rounded-sm px-3 py-2 w-[17%] `}
+        className={`bg-sub_color rounded-sm px-3 py-2 w-[17%] `}
         type="date"
         name=""
         id=""

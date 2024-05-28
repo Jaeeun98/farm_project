@@ -11,6 +11,7 @@
 }
 
 body {
+  color: "#3A3A3A";
 }
 
 @layer utilities {

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Search from "./common/search";
-
-const filterArr = ["농장", "목장", "체험"];
+import Search from "../common/search";
+import { filterArr } from "../common/filterArr";
 
 export default function MainSearch() {
   const [searchData, setSearchData] = useState(filterArr[0]);
