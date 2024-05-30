@@ -49,7 +49,7 @@ export default function ContentsList() {
       {testData.map((item) => (
         <li className="w-[24%]">
           <Image
-            className="h-[193px]"
+            className="h-[193px] rounded-img_rounded"
             src={item.img}
             alt="농장이미지"
             width={425}

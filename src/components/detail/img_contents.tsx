@@ -9,8 +9,8 @@ interface Img {
   src: string;
 }
 
-const first_img_Style = `w-[50%] h-[100%] pe-2 `;
-const img_style = `w-[48%] h-[48%]`;
+const first_img_Style = `w-[50%] h-[100%] pe-2 rounded-img_rounded`;
+const img_style = `w-[48%] h-[48%] rounded-img_rounded`;
 
 export default function ImgContents({ imgs }: Props) {
   return (

@@ -23,6 +23,9 @@ const config: Config = {
       height: {
         header_height: "80px",
       },
+      borderRadius: {
+        img_rounded: "20px",
+      },
     },
   },
   plugins: [],
