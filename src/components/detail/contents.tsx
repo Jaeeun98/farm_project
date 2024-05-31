@@ -3,6 +3,7 @@ import StarScore from "../ui/star_score";
 import Review from "./review";
 import Map from "./map";
 import Image from "next/image";
+import Link from "next/link";
 
 const imgTestData = [
   {
@@ -72,7 +73,6 @@ export default function Contents() {
             />
             <p>00:00 ~ 00:00 체험시간 2시간</p>
           </div>
-
           <p className="mt-6">농장소개</p>
         </div>
         <div className="w-[24%] max-[425px] h-[248px] border rounded-2xl px-10 py-5 shadow-md">
@@ -86,9 +86,11 @@ export default function Contents() {
             <p className="text-text_default font-semibold">30명</p>
           </div>
           <p className=" text-right font-bold text-[20px]">10,000원</p>
-          <button className="w-full bg-point_color mt-4 py-3 rounded-lg text-white">
-            예약하기
-          </button>
+          <Link href={"/reservations"}>
+            <button className="w-full bg-point_color mt-4 py-3 rounded-lg text-white">
+              예약하기
+            </button>
+          </Link>
         </div>
       </div>
     </section>
