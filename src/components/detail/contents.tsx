@@ -35,12 +35,12 @@ export default function Contents() {
   return (
     <section className="px-layout_px text-text_default pb-24">
       <ImgContents imgs={imgTestData} />
-      <div className="border-b border-b-[#ddd] flex h-[259px]">
+      <div className="border-b border-b-[#ddd] flex justify-between h-[259px]">
         <div className="w-[75%]">
           <div>
             <p className="text-text_sub my-1 text-[16px]">농장</p>
-            <p className="font-bold my-1 text-[24px]">농장명</p>
-            <p className="flex items-center">
+            <p className="font-bold my-2 text-[24px]">농장명</p>
+            <p className="flex items-center pb-2">
               <span>
                 <StarScore score="0.0" />
               </span>
@@ -52,7 +52,7 @@ export default function Contents() {
         <Map />
       </div>
       <div className="flex justify-between mt-8">
-        <div>
+        <div className="w-[75%]">
           <p className={title_style}>농장소개</p>
           <div className={`${icon_box_style}`}>
             <Image
@@ -75,7 +75,7 @@ export default function Contents() {
 
           <p className="mt-6">농장소개</p>
         </div>
-        <div className="w-[425px] h-[248px] border rounded-2xl px-10 py-5 shadow-md">
+        <div className="w-[24%] max-[425px] h-[248px] border rounded-2xl px-10 py-5 shadow-md">
           <p className={title_style}>결제정보</p>
           <div className={pay_sub_text_style}>
             <p className="text-text_sub">날짜</p>

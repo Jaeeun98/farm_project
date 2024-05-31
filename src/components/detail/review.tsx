@@ -65,7 +65,7 @@ export default function Review() {
       <Slider {...settings}>
         {testData.map((item) => (
           <li
-            className="flex border rounded-xl px-4 py-3 w-[445px] h-[87px] shadow-lg me-3"
+            className="flex border rounded-xl px-4 py-3 w-[445px] h-[91px] shadow-lg me-3"
             key={item.nickname}>
             <div className="flex ">
               <Image
