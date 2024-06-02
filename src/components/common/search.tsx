@@ -41,7 +41,7 @@ export default function Search({ detail = false }: Props) {
           src={"/images/icon/stroke.png"}
           alt="search_icon"
         />
-        <input className={InputStyle} type="number" placeholder="인원" />
+        <input className={InputStyle} type="number" placeholder="인원" min={1}/>
       </div>
       <button className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
         {detail ? "재검색" : "검색"}

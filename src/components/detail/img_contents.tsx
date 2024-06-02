@@ -14,7 +14,7 @@ const img_style = `w-[48%] h-[48%] rounded-img_rounded`;
 
 export default function ImgContents({ imgs }: Props) {
   return (
-    <div className="my-10 h-[440px] flex ">
+    <div className="my-10 h-[440px] flex  ">
       <Image
         className={`${first_img_Style}`}
         width={500}
@@ -22,7 +22,7 @@ export default function ImgContents({ imgs }: Props) {
         src={imgs[0].src}
         alt="farm_img"
       />
-      <div className="flex flex-wrap ps-2 gap-4">
+      <div className="flex flex-wrap gap-5 justify-end">
         {imgs.map((item, i) => {
           if (i !== 0)
             return (

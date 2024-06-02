@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function MapComponent() {
   return (
-    <div className="w-[425px] h-[218px] rounded-xl shadow-lg overflow-hidden">
+    <div className="w-[24%] max-[425px] h-[218px] rounded-xl shadow-lg overflow-hidden">
       <APIProvider apiKey={GOOGL_MAP_KEY}>
         <Map
           style={{ width: "100%", height: "80%", borderRadius: 20 }}
