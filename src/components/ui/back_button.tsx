@@ -12,7 +12,7 @@ export default function BackButton({ text }: Props) {
   const handleBack = () => router.back();
 
   return (
-    <button onClick={handleBack} className="flex gap-2 items-center">
+    <button onClick={handleBack} className="flex gap-2 items-center my-6">
       <Image
         src="/images/icon/vector.png"
         alt="vector_icon"

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import CalendarInput from "../ui/calendar_input";
+import PersonInput from "../ui/person_input";
 
 const InputBox = `relative bg-sub_color rounded-sm  flex items-center`;
 const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
@@ -27,22 +29,8 @@ export default function Search({ detail = false }: Props) {
           id=""
         />
       </div>
-      <input
-        className={`bg-sub_color rounded-sm px-3 py-2 w-[17%] `}
-        type="date"
-        name=""
-        id=""
-      />
-      <div className={`${InputBox} w-[17%]`}>
-        <Image
-          className={ImgStyle}
-          width={24}
-          height={24}
-          src={"/images/icon/stroke.png"}
-          alt="search_icon"
-        />
-        <input className={InputStyle} type="number" placeholder="인원" min={1}/>
-      </div>
+      <CalendarInput />
+      <PersonInput />
       <button className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
         {detail ? "재검색" : "검색"}
       </button>
