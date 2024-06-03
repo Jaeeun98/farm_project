@@ -1,11 +1,7 @@
 import FarmData from "@/components/reservations/farm_data";
 import BackButton from "@/components/ui/back_button";
 import Time from "./time";
-
-const testData = {
-  availableTime: [],
-  completed: [],
-};
+import BookerInformation from "./booker_information";
 
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
@@ -15,6 +11,7 @@ export default function Contsnts() {
       <FarmData />
       <div className="w-[80%]">
         <Time />
+        <BookerInformation />
       </div>
     </section>
   );
