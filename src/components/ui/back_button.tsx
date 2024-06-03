@@ -6,6 +6,7 @@ interface Props {
   text: string;
 }
 
+//뒤로가기 버튼
 export default function BackButton({ text }: Props) {
   const router = useRouter();
 

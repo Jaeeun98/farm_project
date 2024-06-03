@@ -24,7 +24,7 @@ const config: Config = {
         header_height: "80px",
       },
       borderRadius: {
-        img_rounded: "20px",
+        box_rounded: "20px",
       },
     },
   },
