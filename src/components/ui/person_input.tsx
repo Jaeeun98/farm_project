@@ -1,9 +1,13 @@
 import Image from "next/image";
 
-export default function PersonInput() {
+interface Props {
+  size: number;
+}
+
+export default function PersonInput({ size }: Props) {
   return (
     <div
-      className={`relative bg-sub_color rounded-sm  flex items-center w-[17%]`}>
+      className={`relative bg-sub_color rounded-sm  flex items-center w-[${size}%]`}>
       <Image
         className={"absolute left-2"}
         width={24}

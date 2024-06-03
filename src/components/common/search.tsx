@@ -29,8 +29,8 @@ export default function Search({ detail = false }: Props) {
           id=""
         />
       </div>
-      <CalendarInput />
-      <PersonInput />
+      <CalendarInput size={17} />
+      <PersonInput size={17} />
       <button className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
         {detail ? "재검색" : "검색"}
       </button>

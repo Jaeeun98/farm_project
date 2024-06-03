@@ -6,7 +6,7 @@ interface Props {
 
 export default function Call({ phoneNumber }: Props) {
   return (
-    <div className={`flex items-center mb-2 text-[14px] gap-2`}>
+    <div className={`flex items-center text-[14px] gap-2`}>
       <Image
         src="/images/icon/call.png"
         alt="call_icon"

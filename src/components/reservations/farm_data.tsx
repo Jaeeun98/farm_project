@@ -7,7 +7,7 @@ import PersonInput from "../ui/person_input";
 
 export default function FarmData() {
   return (
-    <div className="h-[248px] flex shadow-lg rounded-[20px] px-8 py-4 gap-6">
+    <div className="h-[248px] text-text_default flex shadow-lg rounded-[20px] px-8 py-6 gap-6">
       <Image
         className="rounded-[20px]"
         src="/images/banner.png"
@@ -15,21 +15,20 @@ export default function FarmData() {
         width={353}
         height={192}
       />
-      <div>
+      <div className="w-[80%]">
         <p className="text-text_sub">농장</p>
-        <p>농장명</p>
+        <p className="my-3 text-[24px] font-bold">농장명</p>
         <div className="flex">
           <StarScore score="0.0" />
-          <p className="text-text_sub">000명</p>
+          <p className="text-text_sub text-[14px]">000명</p>
         </div>
-
-        <div className="flex">
+        <div className="flex gap-4 my-3">
           <Call phoneNumber="010-0000-0000" />
           <Time time="00:00 - 00:00 체험시간 2시간" />
         </div>
-        <div className="flex w-full">
-          <CalendarInput />
-          <PersonInput />
+        <div className="flex w-full gap-4">
+          <CalendarInput size={50} />
+          <PersonInput size={50} />
         </div>
       </div>
     </div>
