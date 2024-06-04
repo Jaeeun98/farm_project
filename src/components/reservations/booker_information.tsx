@@ -1,4 +1,4 @@
-const input_style = "border-b w-full py-2 mt-2";
+const input_style = "border-b w-full p-2 mt-2";
 const input_box_style = "text-[14px] mb-8 text-text_default";
 //예약자 정보
 export default function BookerInformation() {

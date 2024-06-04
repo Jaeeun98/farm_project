@@ -7,7 +7,7 @@ import PayInformation from "./pay_information";
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
   return (
-    <section className="px-layout_px border-t">
+    <section className="px-layout_px border-t mb-24">
       <BackButton text={"예약 확인 및 결제"} />
       <FarmData />
       <div className="flex gap-6 mt-6">
