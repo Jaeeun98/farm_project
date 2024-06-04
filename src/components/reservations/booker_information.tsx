@@ -3,7 +3,8 @@ const input_box_style = "text-[14px] mb-8 text-text_default";
 //예약자 정보
 export default function BookerInformation() {
   return (
-    <div className={`w-full h-[356px] shadow-lg rounded-box_rounded px-8 py-6`}>
+    <div
+      className={`mt-6 border w-full h-[356px] shadow-lg rounded-box_rounded px-8 py-6`}>
       <h2 className="font-bold text-[20px] my-2">예약자 정보</h2>
       <div className={`${input_box_style}`}>
         <p>이름</p>

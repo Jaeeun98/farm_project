@@ -8,7 +8,7 @@ import PersonInput from "../ui/person_input";
 //예약 확인 및 결제, 농장 데이터
 export default function FarmData() {
   return (
-    <div className="h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
+    <div className="border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <Image
         className="rounded-box_rounded"
         src="/images/banner.png"

@@ -29,7 +29,7 @@ const select_time_style = "bg-point_color text-[white]";
 export default function Time() {
   const [selectTime, setSelectTime] = useState("10:00");
   return (
-    <div className="rounded-box_rounded shadow-lg w-full h-[118px] mt-8 px-8 py-6 ">
+    <div className="border rounded-box_rounded shadow-lg w-full h-[118px] px-8 py-6 ">
       <h2 className="font-bold">예약시간</h2>
       <Slider {...settings}>
         {testData.timeArr.map((item) => {
