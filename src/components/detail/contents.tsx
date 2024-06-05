@@ -2,11 +2,13 @@ import ImgContents from "./img_contents";
 import StarScore from "../ui/star_score";
 import Review from "./review";
 import Map from "./map";
-import Image from "next/image";
 import Link from "next/link";
 import Call from "../ui/call";
 import Time from "../ui/time";
 
+interface Props {
+  farmId: string;
+}
 const imgTestData = [
   {
     id: 1,
@@ -30,11 +32,10 @@ const imgTestData = [
   },
 ];
 
-const icon_box_style = ``;
 const title_style = `font-bold text-[20px] mb-3`;
 const pay_sub_text_style = `flex justify-between text-[14px]`;
 
-export default function Contents() {
+export default function Contents({ farmId }: Props) {
   return (
     <section className="px-layout_px text-text_default pb-24">
       <ImgContents imgs={imgTestData} />
