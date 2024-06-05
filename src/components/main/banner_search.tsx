@@ -4,7 +4,8 @@ import { useState } from "react";
 import Search from "../common/search";
 import { filterArr } from "../common/filterArr";
 
-export default function MainSearch() {
+//main, 베너 검색페이지
+export default function BannerSearch() {
   const [searchData, setSearchData] = useState(filterArr[0]);
 
   const changeSearchData = (filterMenu: string) => {

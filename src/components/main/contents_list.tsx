@@ -1,5 +1,10 @@
 import Image from "next/image";
 import StarScore from "../ui/star_score";
+import { FarmData } from "@/types/farm";
+
+interface Props {
+  contentsData: FarmData[];
+}
 
 const testData = [
   {
@@ -43,27 +48,27 @@ const testData = [
 const sub_text_style = `text-[12px] text-text_sub my-1`;
 const default_text_style = `text-text_default font-bold my-1`;
 
-export default function ContentsList() {
+export default function ContentsList({ contentsData }: Props) {
   return (
-    <ul className="flex w-full justify-between">
-      {testData.map((item) => (
-        <li className="w-[24%]">
+    <ul className="flex w-full flex-wrap gap-4">
+      {contentsData?.map((item) => (
+        <li key={item.farmId} className="w-[24.3%]">
           <Image
             className="w-[100%] h-[193px] rounded-box_rounded"
-            src={item.img}
+            src={item.farmMainImageUrl}
             alt="농장이미지"
             width={425}
             height={193}
           />
-          <p className={`${sub_text_style} mt-3`}>{item.filter}</p>
-          <p className={`${default_text_style} text-[16px]`}>{item.name}</p>
-          <p className={`${sub_text_style}`}>{item.addr}</p>
+          <p className={`${sub_text_style} mt-3`}>{item.farmKindNm}</p>
+          <p className={`${default_text_style} text-[16px]`}>{item.farmName}</p>
+          <p className={`${sub_text_style}`}>{item.farmZip}</p>
           <div className="flex items-center">
-            <StarScore score={item.score} />
-            <span className={`${sub_text_style}`}>{item.num}명</span>
+            <StarScore score={item.reviewStar} />
+            <span className={`${sub_text_style}`}>{item.reviewStarCnt}</span>
           </div>
           <p className={`${default_text_style} text-[20px] text-right`}>
-            {item.price}원~
+            {item.farmUseAmt}~
           </p>
         </li>
       ))}

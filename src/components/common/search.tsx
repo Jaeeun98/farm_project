@@ -10,6 +10,7 @@ interface Props {
   detail?: boolean; //디테일 페이지의 컴포넌트인지 구분
 }
 
+//검색 컴포넌트
 export default function Search({ detail = false }: Props) {
   return (
     <div className="flex text-[14px] w-full h-[50%] gap-4 items-center p-6">
