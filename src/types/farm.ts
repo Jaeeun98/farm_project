@@ -17,5 +17,5 @@ export interface FarmData {
 }
 
 //농장, 목장, 체험
-export type FarmKindKey = "01" | "02" | "03";
+export type FarmKindKey = "01" | "02" | "03" | string;
 export type FarmKind = "농장" | "목장" | "체험";

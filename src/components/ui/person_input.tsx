@@ -2,9 +2,10 @@ import Image from "next/image";
 
 interface Props {
   size: number;
+  changeSearchData: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function PersonInput({ size }: Props) {
+export default function PersonInput({ size, changeSearchData }: Props) {
   return (
     <div
       className={`relative bg-sub_color rounded-sm  flex items-center w-[${size}%]`}>
@@ -19,6 +20,8 @@ export default function PersonInput({ size }: Props) {
         className={"bg-sub_color w-full ps-9 pe-3 py-2"}
         type="number"
         placeholder="인원"
+        name="farmMaxUserCnt"
+        onChange={(e) => changeSearchData(e)}
       />
     </div>
   );

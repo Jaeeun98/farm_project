@@ -13,13 +13,5 @@
 body {
 }
 
-/* .slick-slide:not(:last-child) {
-  margin-right: 10px;
-}
-
-.slick-list {
-  overflow-x: hidden;
-} */
-
 @layer utilities {
 }
