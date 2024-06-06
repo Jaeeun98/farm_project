@@ -6,7 +6,7 @@ export default function FilterIcon() {
     <Image
       width={28}
       height={28}
-      src={"/images/filter.png"}
+      src={"/images/icon/filter.png"}
       alt="filter_icon"
     />
   );

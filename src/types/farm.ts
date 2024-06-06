@@ -16,6 +16,24 @@ export interface FarmData {
   reviewStarCnt: string;
 }
 
+export interface FarmDetailData {
+  farmName: string;
+  farmZip: string;
+  farmUseTimeDetail: string;
+  reviewStar: string;
+  reviewStarCnt: string;
+  bannerImageList: BannerImageList[];
+  farmUseAmt: string;
+  farmLongitude: string;
+  farmLatitude: string;
+  farmId: string;
+  farmKindNm: string;
+}
+
+interface BannerImageList {
+  bannerImageUrl: string;
+}
+
 //농장, 목장, 체험
 export type FarmKindKey = "01" | "02" | "03" | string;
 export type FarmKind = "농장" | "목장" | "체험";

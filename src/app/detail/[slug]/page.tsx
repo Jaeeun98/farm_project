@@ -8,10 +8,9 @@ interface Props {
 }
 
 export default function Detail({ params }: Props) {
-  console.log(params);
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Contents farmId={params.slug} />
     </div>
   );

@@ -1,4 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+
+import { getFarmSearchList } from "@/app/api/farm";
+import { getFilterKey } from "../common/filterArr";
+
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
 
@@ -8,16 +15,36 @@ const ImgStyle = `absolute left-2`;
 
 interface Props {
   detail?: boolean; //디테일 페이지의 컴포넌트인지 구분
-  changeSearchData: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSearch: () => void;
+  farmData?: string;
 }
 
 //검색 컴포넌트
-export default function Search({
-  detail = false,
-  changeSearchData,
-  handleSearch,
-}: Props) {
+export default function Search({ detail = false, farmData = "" }: Props) {
+  const [searchData, setSearchData] = useState({
+    farmKind: farmData,
+    farmName: "",
+    farmUseDay: "",
+    farmMaxUserCnt: "",
+  });
+
+  //검색 데이터 변경
+  const changeSearchData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setSearchData({
+      ...searchData,
+      [name]: value,
+    });
+  };
+
+  //검색 버튼 클릭시
+  const handleSearch = async () => {
+    const result = await getFarmSearchList({
+      ...searchData,
+      farmKind: getFilterKey(farmData),
+    });
+  };
+
   return (
     <div className="flex text-[14px] w-full h-[50%] gap-4 items-center p-6">
       <div className={`${InputBox} w-[50%]`}>
@@ -40,7 +67,8 @@ export default function Search({
       <PersonInput size={17} changeSearchData={changeSearchData} />
       <button
         onClick={handleSearch}
-        className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
+        className="bg-point_color text-white rounded-md w-[16%] px-3 py-2"
+      >
         {detail ? "재검색" : "검색"}
       </button>
     </div>
