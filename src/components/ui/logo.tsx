@@ -1,4 +1,10 @@
 //로코 컴포넌트
-export default function Logo() {
-  return <h1 className="text-point_color text-4xl font-bold">logo</h1>;
+interface Props {
+  size: 's' | 'b';
+}
+
+export default function Logo({size = 's'}: Props) {
+  const textSize = size === 's' ? '32' : '80';
+  console.log(textSize)
+  return <h1 className={`text-point_color text-[${[textSize]}px] font-bold`}>logo</h1>;
 }

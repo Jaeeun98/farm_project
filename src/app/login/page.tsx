@@ -1,5 +1,11 @@
+import Header from "@/components/common/header";
+import LoginContents from "@/components/login/login_contents";
+
 export default function Login(){
     return (
-        <div></div>
+        <div>
+            <Header />
+            <LoginContents />
+        </div>
     )
-}
+} 
