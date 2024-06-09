@@ -5,6 +5,5 @@ interface Props {
 
 export default function Logo({size = 's'}: Props) {
   const textSize = size === 's' ? '32' : '80';
-  console.log(textSize)
   return <h1 className={`text-point_color text-[${[textSize]}px] font-bold`}>logo</h1>;
 }

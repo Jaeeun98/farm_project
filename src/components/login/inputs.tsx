@@ -35,7 +35,7 @@ export default function Inputs(){
             <input onChange={e => inputChange(e)} className={`${input_style} border mt-10`} type="text" name="userEmail" id="" placeholder="아이디 입력" />
             <input onChange={e => inputChange(e)} className={`${input_style} border` } type="password" name="password" placeholder="비밀번호 입력" />
             <button disabled={btn_disabled} className={`${input_style}  ${btn_disabled ? disabled_button_style : button_style}`}>로그인</button>
-            <Link href={'/signUp'}>
+            <Link href={'/sign_up'}>
                 <button className="text-text_sub text-[14px] mt-4">회원가입</button>
             </Link>
         </div>
