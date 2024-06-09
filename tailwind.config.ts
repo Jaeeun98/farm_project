@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  mode: "jit",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,6 +23,7 @@ const config: Config = {
       },
       height: {
         header_height: "80px",
+        calc_height: "calc(100vh - 120px)",
       },
       borderRadius: {
         box_rounded: "20px",

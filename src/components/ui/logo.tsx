@@ -1,9 +1,9 @@
-//로코 컴포넌트
+//로고 컴포넌트
 interface Props {
-  size: 's' | 'b';
+  size: "s" | "b";
 }
 
-export default function Logo({size = 's'}: Props) {
-  const textSize = size === 's' ? '32' : '80';
-  return <h1 className={`text-point_color text-[${[textSize]}px] font-bold`}>logo</h1>;
+export default function Logo({ size = "s" }: Props) {
+  const textSize = size === "s" ? "text-3xl" : "text-6xl";
+  return <h1 className={`text-point_color ${textSize} font-bold`}>logo</h1>;
 }
