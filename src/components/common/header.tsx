@@ -1,11 +1,18 @@
+import Link from "next/link";
 import FilterIcon from "../ui/filter_icon";
 import Logo from "../ui/logo";
+import LoginButton from "../ui/login_button";
 
 export default function Header() {
   return (
     <header className="flex justify-between px-layout_px h-header_height items-center">
-      <Logo />
-      <FilterIcon />
+      <Link href={'/'}>
+        <Logo /> 
+      </Link>
+     <Link href={'/login'}>
+     <LoginButton/>
+     </Link>
+     
     </header>
   );
 }
