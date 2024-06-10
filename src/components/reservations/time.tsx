@@ -23,7 +23,7 @@ const testData = {
 };
 
 const possible_time_style = "border border-point_color text-point_color";
-const unable_time_style = "bg-[#F6F6F6] text-[#C6C6C6]";
+const unable_time_style = "bg-sub_color text-[#C6C6C6]";
 const select_time_style = "bg-point_color text-[white]";
 
 export default function Time() {
