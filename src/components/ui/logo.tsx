@@ -1,6 +1,6 @@
 //로고 컴포넌트
 interface Props {
-  size: "s" | "b";
+  size?: "s" | "b";
 }
 
 export default function Logo({ size = "s" }: Props) {

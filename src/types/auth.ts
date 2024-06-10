@@ -1,6 +1,6 @@
 export interface Login {
-  userEmail: string;
-  password: string;
+  userWebId: string;
+  userWebPw: string;
 }
 
 export interface Sign {

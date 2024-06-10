@@ -10,11 +10,9 @@ export const getFarmList = async (
 };
 
 //banner, 농장 검색 조회
-export const getFarmSearchList = async (
-  searchData: FarmSearchData
-): Promise<FarmData[]> => {
+export const getFarmSearchList = async (searchData: FarmSearchData) => {
   const response = await apiClient.get(`/farm/list`, { params: searchData });
-  return response.data.result;
+  return response.data;
 };
 
 //농장 detail

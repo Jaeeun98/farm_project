@@ -1,8 +1,10 @@
 "use client";
 
-import { login } from "@/app/api/auth";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { login } from "@/app/api/auth";
 
 //로그인 input, button 컴포넌트
 const input_style = " w-full px-6 py-3 rounded-md my-2";
@@ -10,13 +12,15 @@ const button_style = "bg-point_color text-[#fff]";
 const disabled_button_style = "bg-sub_color text-text_sub cursor-default";
 
 export default function Inputs() {
+  const router = useRouter();
+
   const [loginData, setLoginData] = useState({
-    userEmail: "",
-    password: "",
+    userWebId: "",
+    userWebPw: "",
   });
 
   const btn_disabled =
-    loginData.password !== "" && loginData.userEmail !== "" ? false : true;
+    loginData.userWebPw !== "" && loginData.userWebId !== "" ? false : true;
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,6 +33,12 @@ export default function Inputs() {
 
   const handleLogin = async () => {
     const result = await login(loginData);
+    if (result.statue === "SUCCESS") {
+      alert("로그인에 성공했습니다.");
+      router.push("/");
+    } else {
+      alert(result.errorMessage);
+    }
   };
 
   return (
@@ -37,18 +47,19 @@ export default function Inputs() {
         onChange={(e) => inputChange(e)}
         className={`${input_style} border mt-10`}
         type="text"
-        name="userEmail"
+        name="userWebId"
         id=""
         placeholder="아이디 입력"
       />
       <input
         onChange={(e) => inputChange(e)}
         className={`${input_style} border`}
-        type="password"
-        name="password"
+        type="userWebPw"
+        name="userWebPw"
         placeholder="비밀번호 입력"
       />
       <button
+        onClick={handleLogin}
         disabled={btn_disabled}
         className={`${input_style}  ${
           btn_disabled ? disabled_button_style : button_style

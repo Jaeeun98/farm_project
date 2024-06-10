@@ -2,7 +2,7 @@ import { FarmKind } from "@/types/farm";
 
 export const filterArr = ["농장", "목장", "체험"];
 
-export const getFilterKey = (v: string): string => {
+export const getFilterKey = (v: string | null): string => {
   switch (v) {
     case "농장":
       return "01";

@@ -3,7 +3,7 @@ import { apiClient } from ".";
 
 export const login = async (loginData: Login) => {
   const response = await apiClient.post(`/user/login`, loginData);
-  return response.data.result;
+  return response.data;
 };
 
 export const signUp = async (signUpData: Sign) => {

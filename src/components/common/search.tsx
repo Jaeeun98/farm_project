@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
-import { getFarmSearchList } from "@/app/api/farm";
-import { getFilterKey } from "../common/filterArr";
+import { useRouter } from "next/navigation";
 
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
@@ -20,11 +18,14 @@ interface Props {
 
 //검색 컴포넌트
 export default function Search({ detail = false, farmData = "" }: Props) {
+  const router = useRouter();
+
   const [searchData, setSearchData] = useState({
     farmKind: farmData,
     farmName: "",
     farmUseDay: "",
     farmMaxUserCnt: "",
+    farmData: "",
   });
 
   //검색 데이터 변경
@@ -37,12 +38,10 @@ export default function Search({ detail = false, farmData = "" }: Props) {
     });
   };
 
-  //검색 버튼 클릭시
+  //검색 버튼 클릭시, 검색 리스트 페이지로 이동
   const handleSearch = async () => {
-    const result = await getFarmSearchList({
-      ...searchData,
-      farmKind: getFilterKey(farmData),
-    });
+    const queryString = new URLSearchParams(searchData).toString();
+    router.push(`/search_list?${queryString}`);
   };
 
   return (
@@ -67,8 +66,7 @@ export default function Search({ detail = false, farmData = "" }: Props) {
       <PersonInput size={17} changeSearchData={changeSearchData} />
       <button
         onClick={handleSearch}
-        className="bg-point_color text-white rounded-md w-[16%] px-3 py-2"
-      >
+        className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
         {detail ? "재검색" : "검색"}
       </button>
     </div>
