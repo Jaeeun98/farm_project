@@ -11,9 +11,9 @@ export const settings = {
   nextArrow: <NextArrow arrowStyle={arrowStyle} />,
   prevArrow: <PrevArrow arrowStyle={arrowStyle} />,
   centerPadding: "10px", // Add padding to center
-  afterChange: function (index: number) {
-    console.log(
-      `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-    );
-  },
+  // afterChange: function (index: number) {
+  //   console.log(
+  //     `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+  //   );
+  // },
 };
