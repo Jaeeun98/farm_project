@@ -31,6 +31,7 @@ export interface FarmDetailData {
   farmUseTimeDetailList: FarmTimeArr[];
   farmOwnerTel: string;
   farmUseTimeAndDetailTimeFormat: string;
+  farmIntrcn: string;
 }
 
 export interface FarmTimeArr {

@@ -18,6 +18,7 @@ const pay_sub_text_style = `flex justify-between text-[14px]`;
 
 export default async function Contents({ farmId }: Props) {
   const farmData = await getFarmDetailData(farmId);
+  console.log(farmData);
 
   return (
     <section className="px-layout_px text-text_default pb-24">
@@ -48,20 +49,20 @@ export default async function Contents({ farmId }: Props) {
       <div className="flex justify-between mt-8">
         <div className="w-[75%]">
           <p className={title_style}>농장소개</p>
-          <Call phoneNumber={"000-0000-0000"} />
-          <Time time={farmData.farmUseTimeDetail} />
-          <p className="mt-6">농장소개</p>
+          <Call phoneNumber={farmData.farmOwnerTel} />
+          <Time time={farmData.farmUseTimeAndDetailTimeFormat} />
+          <p className="mt-6 pe-16">{farmData.farmIntrcn}</p>
         </div>
-        <div className="w-[24%] max-[425px] h-[248px] border rounded-2xl px-10 py-5 shadow-md">
+        <div className="w-[24%] max-[425px] h-[180px] border rounded-2xl px-10 py-5 shadow-md">
           <p className={title_style}>결제정보</p>
-          <div className={pay_sub_text_style}>
+          {/* <div className={pay_sub_text_style}>
             <p className="text-text_sub">날짜</p>
             <p className="text-text_default font-semibold">00월 00일</p>
           </div>
           <div className={`${pay_sub_text_style} border-b mb-2 pb-4`}>
             <p className="text-text_sub">인원</p>
             <p className="text-text_default font-semibold">30명</p>
-          </div>
+          </div> */}
           <p className=" text-right font-bold text-[20px]">10,000원</p>
           <Link
             href={{
