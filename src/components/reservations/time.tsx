@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { settings } from "./slider_setting";
 import { useState } from "react";
+import { FarmTimeArr } from "@/types/farm";
 
 //예약 시간 컴포넌트
 
@@ -26,8 +27,13 @@ const possible_time_style = "border border-point_color text-point_color";
 const unable_time_style = "bg-sub_color text-[#C6C6C6]";
 const select_time_style = "bg-point_color text-[white]";
 
-export default function Time() {
-  const [selectTime, setSelectTime] = useState("10:00");
+interface Props {
+  selectTime: string;
+  timeChange: (v: string) => void;
+  timeArr: FarmTimeArr[];
+}
+
+export default function Time({ selectTime, timeChange, timeArr }: Props) {
   return (
     <div className="border rounded-box_rounded shadow-lg w-full h-[118px] px-8 py-6 ">
       <h2 className="font-bold">예약시간</h2>
@@ -35,8 +41,11 @@ export default function Time() {
         {testData.timeArr.map((item) => {
           const possible = !testData.unableArr.includes(item);
           const select = item === selectTime;
+
           return (
             <button
+              key={item}
+              onClick={() => timeChange(item)}
               disabled={!possible || select}
               className={`${
                 select

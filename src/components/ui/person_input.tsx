@@ -2,10 +2,11 @@ import Image from "next/image";
 
 interface Props {
   size: number;
-  changeSearchData: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  changeData: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function PersonInput({ size, changeSearchData }: Props) {
+//인원수 선택
+export default function PersonInput({ size, changeData }: Props) {
   return (
     <div
       className={`relative bg-sub_color rounded-sm  flex items-center w-[${size}%]`}>
@@ -17,11 +18,12 @@ export default function PersonInput({ size, changeSearchData }: Props) {
         alt="search_icon"
       />
       <input
-        className={"bg-sub_color w-full ps-9 pe-3 py-2"}
+        className={"text-[14px] bg-sub_color w-full ps-9 pe-3 py-2"}
         type="number"
         placeholder="인원"
         name="farmMaxUserCnt"
-        onChange={(e) => changeSearchData(e)}
+        min={1}
+        onChange={(e) => changeData(e)}
       />
     </div>
   );

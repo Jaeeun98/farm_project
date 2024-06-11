@@ -8,9 +8,15 @@ const text_box_style = "flex w-full justify-between text-[14px] ";
 const disabled_pay_button_style = "bg-sub_color text-[#C6C6C6] ";
 const pay_button_style = "bg-point_color text-white";
 
+interface Props {
+  payData: any;
+  handlePay: () => void;
+}
+
 //결제정보
-export default function PayInformation() {
+export default function PayInformation({ payData, handlePay }: Props) {
   const [agreement, setAgreement] = useState(false); //동의여부
+
   return (
     <div className="text-text_default">
       <div className=" border w-full h-[340px] shadow-lg rounded-box_rounded px-8 py-6">
@@ -18,11 +24,11 @@ export default function PayInformation() {
         <div className="py-4 border-b">
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>날짜</p>
-            <p>00월 00일</p>
+            <p>{payData.reservationDate}</p>
           </div>
           <div className={`${text_box_style} my-2`}>
             <p className={`${label_style}`}>인원</p>
-            <p>30명</p>
+            <p>{payData.reservationParticipants}</p>
           </div>
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>이벤트</p>
@@ -46,6 +52,7 @@ export default function PayInformation() {
           </p>
         </div>
         <button
+          onClick={handlePay}
           className={`${
             agreement ? pay_button_style : disabled_pay_button_style
           } w-full rounded-md px-3 py-3 mt-6`}>

@@ -19,7 +19,6 @@ const pay_sub_text_style = `flex justify-between text-[14px]`;
 export default async function Contents({ farmId }: Props) {
   const farmData = await getFarmDetailData(farmId);
 
-  console.log(farmData);
   return (
     <section className="px-layout_px text-text_default pb-24">
       <ImgContents imgs={farmData.bannerImageList} />
@@ -64,7 +63,11 @@ export default async function Contents({ farmId }: Props) {
             <p className="text-text_default font-semibold">30명</p>
           </div>
           <p className=" text-right font-bold text-[20px]">10,000원</p>
-          <Link href={"/reservations"}>
+          <Link
+            href={{
+              pathname: "/reservations",
+              query: { farmId },
+            }}>
             <button className="w-full bg-point_color mt-4 py-3 rounded-lg text-white">
               예약하기
             </button>

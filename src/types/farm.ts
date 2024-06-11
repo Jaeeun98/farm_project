@@ -28,6 +28,13 @@ export interface FarmDetailData {
   farmLatitude: string;
   farmId: string;
   farmKindNm: string;
+  farmUseTimeDetailList: FarmTimeArr[];
+  farmOwnerTel: string;
+  farmUseTimeAndDetailTimeFormat: string;
+}
+
+export interface FarmTimeArr {
+  farmUseTimeDetailSlot: string;
 }
 
 interface BannerImageList {

@@ -25,7 +25,6 @@ export default function Search({ detail = false, farmData = "" }: Props) {
     farmName: "",
     farmUseDay: "",
     farmMaxUserCnt: "",
-    farmData: "",
   });
 
   //검색 데이터 변경
@@ -62,8 +61,8 @@ export default function Search({ detail = false, farmData = "" }: Props) {
           onChange={(e) => changeSearchData(e)}
         />
       </div>
-      <CalendarInput size={17} changeSearchData={changeSearchData} />
-      <PersonInput size={17} changeSearchData={changeSearchData} />
+      <CalendarInput size={17} changeData={changeSearchData} />
+      <PersonInput size={17} changeData={changeSearchData} />
       <button
         onClick={handleSearch}
         className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
