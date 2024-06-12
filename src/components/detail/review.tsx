@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function Review({ reviewData }: Props) {
-  console.log(reviewData);
   if (reviewData[0].reviewerName === null)
     return <p className="leading-8	text-text_sub">리뷰가 존재하지 않습니다.</p>;
 

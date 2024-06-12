@@ -13,7 +13,6 @@ interface Props {
 
 //예약 확인 및 결제, 농장 데이터
 export default function FarmData({ inputChange, farmData }: Props) {
-  console.log(farmData);
   return (
     <div className="border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <Image

@@ -1,0 +1,7 @@
+.slick-slide {
+  width: 85px !important;
+}
+
+.slick-slide > div {
+  margin-right: 15px;
+}

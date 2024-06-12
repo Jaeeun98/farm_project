@@ -8,12 +8,12 @@ export const settings = {
   infinite: true,
   slidesToShow: 3,
   swipeToSlide: true,
-  nextArrow: <NextArrow arrowStyle={arrowStyle} />,
-  prevArrow: <PrevArrow arrowStyle={arrowStyle} />,
+  nextArrow: <NextArrow arrowStyle={`${arrowStyle} right-1`} />,
+  prevArrow: <PrevArrow arrowStyle={`${arrowStyle} left-[-10px]`} />,
   centerPadding: "10px", // Add padding to center
-  afterChange: function (index: number) {
-    console.log(
-      `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-    );
-  },
+  // afterChange: function (index: number) {
+  //   console.log(
+  //     `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+  //   );
+  // },
 };

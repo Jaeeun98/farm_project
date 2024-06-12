@@ -18,7 +18,6 @@ const pay_sub_text_style = `flex justify-between text-[14px]`;
 
 export default async function Contents({ farmId }: Props) {
   const farmData = await getFarmDetailData(farmId);
-  console.log(farmData);
 
   return (
     <section className="px-layout_px text-text_default pb-24">

@@ -12,7 +12,7 @@ export default function PrevArrow({ arrowStyle, onClick }: Props) {
       alt="prev_arrow_icon"
       width={68}
       height={68}
-      className={`${arrowStyle} left-[-10px]`}
+      className={`${arrowStyle} `}
     />
   );
 }

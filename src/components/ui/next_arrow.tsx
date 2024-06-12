@@ -13,7 +13,7 @@ export default function NextArrow({ arrowStyle, onClick }: Props) {
       alt="next_arrow_icon"
       width={68}
       height={68}
-      className={`${arrowStyle} right-1`}
+      className={`${arrowStyle} `}
     />
   );
 }

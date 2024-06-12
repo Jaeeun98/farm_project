@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const label_style = "text-text_sub ";
 const text_box_style = "flex w-full justify-between text-[14px] ";
@@ -16,6 +16,27 @@ interface Props {
 //결제정보
 export default function PayInformation({ payData, handlePay }: Props) {
   const [agreement, setAgreement] = useState(false); //동의여부
+
+  const handleSetAreement = (): boolean => {
+    let state = false;
+
+    if (
+      payData.reservationName !== "" &&
+      payData.reservationEmail !== "" &&
+      payData.reservationTel !== "" &&
+      payData.reservationDate !== "" &&
+      payData.reservationParticipants !== "" &&
+      payData.reservationTime !== "" &&
+      agreement
+    )
+      state = true;
+
+    return state;
+  };
+
+  useEffect(() => {
+    handleSetAreement;
+  }, [payData]);
 
   return (
     <div className="text-text_default">
@@ -48,13 +69,13 @@ export default function PayInformation({ payData, handlePay }: Props) {
             defaultChecked={agreement}
           />
           <p className="text-[14px]">
-            [필수] 예악자의 개인 정보 수집 및 이용에 동의합니다.{" "}
+            [필수] 예악자의 개인 정보 수집 및 이용에 동의합니다.
           </p>
         </div>
         <button
           onClick={handlePay}
           className={`${
-            agreement ? pay_button_style : disabled_pay_button_style
+            handleSetAreement() ? pay_button_style : disabled_pay_button_style
           } w-full rounded-md px-3 py-3 mt-6`}>
           결제하기
         </button>
