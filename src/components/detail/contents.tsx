@@ -39,7 +39,7 @@ export default async function Contents({ farmId }: Props) {
               </span>
             </p>
           </div>
-          <Review />
+          <Review reviewData={farmData.reviewList} />
         </div>
         <Map
           lat={Number(farmData.farmLatitude)}

@@ -10,61 +10,41 @@ import StarScore from "../ui/star_score";
 
 import "./slider.css";
 import { settings } from "./slider_setting";
+import { ReviewData } from "@/types/farm";
 
-const testData = [
-  {
-    img: "/images/banner.png",
-    nickname: "닉네임",
-    score: "0.0",
-    content:
-      "리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰",
-  },
-  {
-    img: "/images/banner.png",
-    nickname: "닉네임",
-    score: "0.0",
-    content:
-      "리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰",
-  },
-  {
-    img: "/images/banner.png",
-    nickname: "닉네임",
-    score: "0.0",
-    content:
-      "리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰",
-  },
-  {
-    img: "/images/banner.png",
-    nickname: "닉네임",
-    score: "0.0",
-    content:
-      "리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰",
-  },
-];
+interface Props {
+  reviewData: ReviewData[];
+}
 
-export default function Review() {
+export default function Review({ reviewData }: Props) {
+  console.log(reviewData);
+  if (reviewData[0].reviewerName === null)
+    return <p className="leading-8	text-text_sub">리뷰가 존재하지 않습니다.</p>;
+
   return (
     <ul className="mt-3">
       <Slider {...settings}>
-        {testData.map((item) => (
+        {reviewData.map((item) => (
           <li
             className="flex border rounded-xl px-4 py-3 w-[445px] h-[91px] shadow-lg me-3"
-            key={item.nickname}>
+            key={item.reviewerName}>
             <div className="flex ">
               <Image
                 className="rounded-full h-[56px] me-4 my-1"
                 width={56}
                 height={56}
-                src={item.img}
+                src={item.reviewerImage}
                 alt="user_img"
               />
-              <div className="flex  ">
+              <div className="flex">
                 <div>
-                  <p className="text-[12px] text-text_sub ">{item.nickname}</p>
-                  <StarScore score="0.0" />
+                  <p className="text-[12px] text-text_sub ">
+                    {item.reviewerName}
+                  </p>
+                  <StarScore score={item.revieweStarScore} />
                 </div>
                 <p className="h-[44px] w-[80%] text-[14px] mt-4 text-ellipsis overflow-hidden ">
-                  {item.content}
+                  {item.revieweContent}
                 </p>
               </div>
             </div>

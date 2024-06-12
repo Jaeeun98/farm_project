@@ -32,6 +32,14 @@ export interface FarmDetailData {
   farmOwnerTel: string;
   farmUseTimeAndDetailTimeFormat: string;
   farmIntrcn: string;
+  reviewList: ReviewData[];
+}
+
+export interface ReviewData {
+  revieweContent: string;
+  revieweStarScore: string;
+  reviewerImage: string;
+  reviewerName: string;
 }
 
 export interface FarmTimeArr {
