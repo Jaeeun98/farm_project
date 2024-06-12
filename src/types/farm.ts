@@ -35,6 +35,17 @@ export interface FarmDetailData {
   reviewList: ReviewData[];
 }
 
+export interface ReservationData {
+  farmId: string | null;
+  reservationName: string;
+  reservationEmail: string;
+  reservationTel: string;
+  reservationDate: string;
+  reservationParticipants: string;
+  reservationStartTime: string;
+  reservationEndTime?: string;
+}
+
 export interface ReviewData {
   revieweContent: string;
   revieweStarScore: string;

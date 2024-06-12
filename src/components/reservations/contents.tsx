@@ -8,7 +8,7 @@ import BackButton from "@/components/ui/back_button";
 import Time from "./time";
 import BookerInformation from "./booker_information";
 import PayInformation from "./pay_information";
-import { getFarmDetailData } from "@/app/api/farm";
+import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
 
 //예약확인 및 결제 컨텐츠
@@ -18,14 +18,15 @@ export default function Contsnts() {
 
   const [farmData, setFarmData] = useState<null | FarmDetailData>(null);
 
-  const [payData, setPayData] = useState({
+  const [reservationData, setReservationData] = useState({
     farmId,
     reservationName: "",
     reservationEmail: "",
     reservationTel: "",
     reservationDate: "",
     reservationParticipants: "",
-    reservationTime: "",
+    reservationStartTime: "",
+    reservationEndTime: "",
   });
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,17 +35,21 @@ export default function Contsnts() {
     if (name === "farmMaxUserCnt") name = "reservationParticipants";
     if (name === "farmUseDay") name = "reservationDate";
 
-    setPayData({
-      ...payData,
+    setReservationData({
+      ...reservationData,
       [name]: value,
     });
   };
 
   //시간 변경 시
-  const timeChange = (reservationTime: string) => {
-    setPayData({
-      ...payData,
-      reservationTime,
+  const timeChange = (
+    reservationStartTime: string,
+    reservationEndTime: string
+  ) => {
+    setReservationData({
+      ...reservationData,
+      reservationStartTime,
+      reservationEndTime,
     });
   };
 
@@ -54,10 +59,10 @@ export default function Contsnts() {
     setFarmData(result);
   };
 
-  console.log(payData);
-
   //결제하기 클릭 시
-  const handlePay = () => {};
+  const handlePay = async () => {
+    const result = await farmReservation(reservationData);
+  };
 
   useEffect(() => {
     handleGetFarmDetailData();
@@ -73,12 +78,15 @@ export default function Contsnts() {
         <div className="w-[75%]">
           <Time
             timeArr={farmData.farmUseTimeDetailList}
-            selectTime={payData.reservationTime}
+            selectTime={reservationData.reservationStartTime}
             timeChange={timeChange}
           />
           <BookerInformation inputChange={inputChange} />
         </div>
-        <PayInformation handlePay={handlePay} payData={payData} />
+        <PayInformation
+          handlePay={handlePay}
+          reservationData={reservationData}
+        />
       </div>
     </section>
   );

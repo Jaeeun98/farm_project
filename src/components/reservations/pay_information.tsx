@@ -1,5 +1,6 @@
 "use client";
 
+import { ReservationData } from "@/types/farm";
 import { useEffect, useState } from "react";
 
 const label_style = "text-text_sub ";
@@ -9,24 +10,24 @@ const disabled_pay_button_style = "bg-sub_color text-[#C6C6C6] ";
 const pay_button_style = "bg-point_color text-white";
 
 interface Props {
-  payData: any;
+  reservationData: ReservationData;
   handlePay: () => void;
 }
 
 //결제정보
-export default function PayInformation({ payData, handlePay }: Props) {
+export default function PayInformation({ reservationData, handlePay }: Props) {
   const [agreement, setAgreement] = useState(false); //동의여부
 
   const handleSetAreement = (): boolean => {
     let state = false;
 
     if (
-      payData.reservationName !== "" &&
-      payData.reservationEmail !== "" &&
-      payData.reservationTel !== "" &&
-      payData.reservationDate !== "" &&
-      payData.reservationParticipants !== "" &&
-      payData.reservationTime !== "" &&
+      reservationData.reservationName !== "" &&
+      reservationData.reservationEmail !== "" &&
+      reservationData.reservationTel !== "" &&
+      reservationData.reservationDate !== "" &&
+      reservationData.reservationParticipants !== "" &&
+      reservationData.reservationStartTime !== "" &&
       agreement
     )
       state = true;
@@ -36,7 +37,7 @@ export default function PayInformation({ payData, handlePay }: Props) {
 
   useEffect(() => {
     handleSetAreement;
-  }, [payData]);
+  }, [reservationData]);
 
   return (
     <div className="text-text_default">
@@ -45,11 +46,11 @@ export default function PayInformation({ payData, handlePay }: Props) {
         <div className="py-4 border-b">
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>날짜</p>
-            <p>{payData.reservationDate}</p>
+            <p>{reservationData.reservationDate}</p>
           </div>
           <div className={`${text_box_style} my-2`}>
             <p className={`${label_style}`}>인원</p>
-            <p>{payData.reservationParticipants}</p>
+            <p>{reservationData.reservationParticipants}</p>
           </div>
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>이벤트</p>

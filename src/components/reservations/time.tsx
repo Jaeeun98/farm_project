@@ -31,7 +31,7 @@ const select_time_style = "bg-point_color text-[white]";
 
 interface Props {
   selectTime: string;
-  timeChange: (v: string) => void;
+  timeChange: (start: string, end: string) => void;
   timeArr: FarmTimeArr[];
 }
 
@@ -40,14 +40,19 @@ export default function Time({ selectTime, timeChange, timeArr }: Props) {
     <div className="border rounded-box_rounded shadow-lg w-full h-[125px] px-8 py-6 ">
       <h2 className="font-bold mb-4">예약시간</h2>
       <Slider {...settings}>
-        {timeArr.map((item) => {
+        {timeArr.map((item, i) => {
           // const possible = !testData.unableArr.includes(item);
           const select = item.farmUseTimeDetailSlot === selectTime;
 
           return (
             <button
               key={item.farmUseTimeDetailSlot}
-              onClick={() => timeChange(item.farmUseTimeDetailSlot)}
+              onClick={() =>
+                timeChange(
+                  item.farmUseTimeDetailSlot,
+                  timeArr[i + 1].farmUseTimeDetailSlot
+                )
+              }
               // disabled={!possible || select}
               className={`${
                 select ? select_time_style : possible_time_style
