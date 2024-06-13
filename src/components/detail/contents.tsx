@@ -1,5 +1,3 @@
-"use client";
-
 import ImgContents from "./img_contents";
 import StarScore from "../ui/star_score";
 import Review from "./review";

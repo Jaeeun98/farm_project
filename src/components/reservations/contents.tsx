@@ -1,7 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 import FarmData from "@/components/reservations/farm_data";
 import BackButton from "@/components/ui/back_button";
@@ -10,14 +10,18 @@ import BookerInformation from "./booker_information";
 import PayInformation from "./pay_information";
 import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
+import BackAlertModal from "./back_alert_modal";
 
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+
   const farmId = searchParams.get("farmId");
+  const [initialized, setInitialized] = useState(false);
 
   const [farmData, setFarmData] = useState<null | FarmDetailData>(null);
-
+  const [backAlertModal, setBackAlertModal] = useState(false);
   const [reservationData, setReservationData] = useState({
     farmId,
     reservationName: "",
@@ -53,6 +57,7 @@ export default function Contsnts() {
     });
   };
 
+  //농장 데이터 가져오기
   const handleGetFarmDetailData = async () => {
     const result = await getFarmDetailData(farmId as string);
 
@@ -61,8 +66,34 @@ export default function Contsnts() {
 
   //결제하기 클릭 시
   const handlePay = async () => {
+    //* 결제하기 후 결과 넣어야함 > 로그인 토큰 처리 한 후에 *
     const result = await farmReservation(reservationData);
+    console.log(result);
   };
+
+  const handlePopState = useCallback(() => {
+    if (!backAlertModal) setBackAlertModal(true);
+  }, []);
+
+  //뒤로가기
+  const handleBack = () => {
+    setBackAlertModal(false);
+    history.back();
+    history.back();
+    window.removeEventListener("popstate", handlePopState);
+  };
+
+  //모달 close
+  const backAlertModalClose = () => setBackAlertModal(false);
+
+  useEffect(() => {
+    if (!initialized) {
+      history.pushState(null, "", location.href); // 초기 상태 푸시
+      setInitialized(true);
+    }
+
+    window.addEventListener("popstate", handlePopState);
+  }, []);
 
   useEffect(() => {
     handleGetFarmDetailData();
@@ -88,6 +119,12 @@ export default function Contsnts() {
           reservationData={reservationData}
         />
       </div>
+      {backAlertModal && (
+        <BackAlertModal
+          backAlertModalClose={backAlertModalClose}
+          handleBack={handleBack}
+        />
+      )}
     </section>
   );
 }
