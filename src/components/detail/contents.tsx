@@ -46,6 +46,7 @@ export default async function Contents({ farmId }: Props) {
         <Map
           lat={Number(farmData.farmLatitude)}
           lng={Number(farmData.farmLongitude)}
+          zip={farmData.farmZip}
         />
       </div>
       <div className="flex justify-between mt-8">
