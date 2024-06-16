@@ -130,7 +130,7 @@ export default function SignUpContents() {
         <input
           onChange={(e) => inputChange(e)}
           className={`${input_style}`}
-          type="tel"
+          type="number"
           name="userTel"
           id="tel"
           placeholder="전화번호 입력('-' 제외)"

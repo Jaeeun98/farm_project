@@ -12,10 +12,15 @@ const pay_button_style = "bg-point_color text-white";
 interface Props {
   reservationData: ReservationData;
   handlePay: () => void;
+  payData: {
+    originalAmt: string;
+    discountRate: string;
+    amt: string;
+  }
 }
 
 //결제정보
-export default function PayInformation({ reservationData, handlePay }: Props) {
+export default function PayInformation({ reservationData, handlePay, payData }: Props) {
   const [agreement, setAgreement] = useState(false); //동의여부
 
   const handleSetAreement = (): boolean => {
@@ -54,12 +59,12 @@ export default function PayInformation({ reservationData, handlePay }: Props) {
           </div>
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>이벤트</p>
-            <p>10% 할인</p>
+            <p>{payData.discountRate} 할인</p>
           </div>
         </div>
         <div className="flex justify-end gap-2 items-end my-4">
-          <p className={`${label_style} text-[14px]`}>10% 10,000원</p>
-          <p>10,000원</p>
+          <p className={`${label_style} text-[14px] line-through`}>{payData.discountRate} {payData.originalAmt}</p>
+          <p>{payData.amt}</p>
         </div>
         <div className="flex gap-2 items-center">
           <input
@@ -72,7 +77,7 @@ export default function PayInformation({ reservationData, handlePay }: Props) {
           <p className="text-[14px]">
             [필수] 예악자의 개인 정보 수집 및 이용에 동의합니다.
           </p>
-        </div>
+        </div>    
         <button
           onClick={handlePay}
           className={`${

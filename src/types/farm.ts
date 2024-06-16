@@ -43,7 +43,8 @@ export interface ReservationData {
   reservationDate: string;
   reservationParticipants: string;
   reservationStartTime: string;
-  reservationEndTime?: string;
+
+
 }
 
 export interface ReviewData {

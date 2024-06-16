@@ -4,7 +4,7 @@ import LoginContents from "@/components/login/login_contents";
 export default function Login(){
     return (
         <div>
-            <Header />
+            <Header page="login" />
             <LoginContents />
         </div>
     )
