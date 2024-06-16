@@ -7,7 +7,7 @@ import PersonInput from "../ui/person_input";
 import { FarmDetailData } from "@/types/farm";
 
 interface Props {
-  inputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   farmData: FarmDetailData;
 }
 
@@ -34,7 +34,7 @@ export default function FarmData({ inputChange, farmData }: Props) {
           <Time time={farmData.farmUseTimeAndDetailTimeFormat} />
         </div>
         <div className="flex w-full gap-4">
-          <CalendarInput size={50} changeData={inputChange} />
+          <CalendarInput size={50} changeData={inputChange && inputChange} />
           <PersonInput size={50} changeData={inputChange} />
         </div>
       </div>
