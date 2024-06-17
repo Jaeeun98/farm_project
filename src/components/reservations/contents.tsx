@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import FarmData from "@/components/reservations/farm_data";
@@ -15,7 +15,6 @@ import BackAlertModal from "./back_alert_modal";
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const farmId = searchParams.get("farmId");
   const [initialized, setInitialized] = useState(false);

@@ -1,5 +1,3 @@
-import { useRouter } from "next/navigation";
-
 interface Props {
   backAlertModalClose: () => void;
   handleBack: () => void;
@@ -11,8 +9,6 @@ export default function BackAlertModal({
   backAlertModalClose,
   handleBack,
 }: Props) {
-  const router = useRouter();
-
   return (
     <div className="flex justify-center items-center w-full h-full absolute top-0 left-0 bg-text_default bg-opacity-75 overflow-hidden z-50">
       <div className="bg-[#fff] rounded-md w-[335px] h-[185px] text-center py-8 px-4">

@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-
-import { login } from "@/app/api/auth";
+import { signIn } from "next-auth/react";
 
 //로그인 input, button 컴포넌트
 const input_style = " w-full px-6 py-3 rounded-md my-2";
@@ -12,8 +10,6 @@ const button_style = "bg-point_color text-[#fff]";
 const disabled_button_style = "bg-sub_color text-text_sub cursor-default";
 
 export default function Inputs() {
-  const router = useRouter();
-
   const [loginData, setLoginData] = useState({
     userWebId: "",
     userWebPw: "",
@@ -32,12 +28,18 @@ export default function Inputs() {
   };
 
   const handleLogin = async () => {
-    const result = await login(loginData);
-    if (result.statue === "SUCCESS") {
-      alert("로그인에 성공했습니다.");
-      router.push("/");
+    const result = await signIn("credentials", {
+      redirect: false,
+      ...loginData,
+    });
+
+    if (result?.error) {
+      // 에러 처리
+      alert(result.error);
     } else {
-      alert(result.errorMessage);
+      // 로그인 성공 처리 (예: 리다이렉트)
+      alert("로그인에 성공했습니다.");
+      // window.location.href = "/";
     }
   };
 
