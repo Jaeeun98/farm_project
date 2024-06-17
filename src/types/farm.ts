@@ -3,6 +3,7 @@ export interface FarmSearchData {
   farmName?: string;
   farmUseDay?: string;
   farmMaxUserCnt?: string;
+  orderByKind: string;
 }
 
 export interface FarmData {
@@ -45,8 +46,6 @@ export interface ReservationData {
   reservationDate: string;
   reservationParticipants: string;
   reservationStartTime: string;
-
-
 }
 
 export interface ReviewData {

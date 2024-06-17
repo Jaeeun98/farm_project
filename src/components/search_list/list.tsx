@@ -19,6 +19,23 @@ export default function List({ rangeData }: Props) {
   const searchParams = useSearchParams();
   const [listData, setListData] = useState<FarmData[]>([]);
 
+  if (!searchParams) return <></>;
+
+  const getRangeKey = () => {
+    switch (rangeData) {
+      case "최신순":
+        return "createDate";
+      case "가격 높은순":
+        return "highUseAmt";
+      case "가격 낮은순":
+        return "lowUseAmt";
+      case "인기순":
+        return "createDate";
+      default:
+        "";
+    }
+  };
+
   //검색 리스트 가져오기
   const handleGetSearhData = async () => {
     const farmKind = searchParams.get("farmKind") || "";
@@ -32,6 +49,7 @@ export default function List({ rangeData }: Props) {
       farmName,
       farmUseDay,
       farmMaxUserCnt,
+      orderByKind: getRangeKey() as string,
     });
 
     if (result.status === "SUCCESS") {
