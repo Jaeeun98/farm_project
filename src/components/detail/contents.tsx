@@ -16,7 +16,12 @@ const pay_sub_text_style = `flex justify-between text-[14px]`;
 
 export default async function Contents({ farmId }: Props) {
   const farmData = await getFarmDetailData(farmId);
-
+  const payData = {
+    originalAmt : farmData.farmEventDiscountOriginalAmt,
+    discountRate : farmData.farmEventDiscountRate,
+    amt: farmData.farmUseAmt
+  }
+    
   return (
     <section className="px-layout_px text-text_default pb-24">
       <ImgContents imgs={farmData.bannerImageList} />
@@ -41,6 +46,7 @@ export default async function Contents({ farmId }: Props) {
         <Map
           lat={Number(farmData.farmLatitude)}
           lng={Number(farmData.farmLongitude)}
+          zip={farmData.farmZip}
         />
       </div>
       <div className="flex justify-between mt-8">
@@ -64,7 +70,7 @@ export default async function Contents({ farmId }: Props) {
           <Link
             href={{
               pathname: "/reservations",
-              query: { farmId },
+              query: { farmId, ...payData },
             }}>
             <button className="w-full bg-point_color mt-4 py-3 rounded-lg text-white">
               예약하기

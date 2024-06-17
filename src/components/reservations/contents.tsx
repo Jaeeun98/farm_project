@@ -17,6 +17,13 @@ export default function Contsnts() {
   const searchParams = useSearchParams();
 
   const farmId = searchParams.get("farmId");
+  const payData= {
+    originalAmt: searchParams.get("originalAmt"),
+    discountRate: searchParams.get("discountRate"),
+    amt: searchParams.get("amt")  
+  }
+
+
   const [initialized, setInitialized] = useState(false);
 
   const [farmData, setFarmData] = useState<null | FarmDetailData>(null);
@@ -29,7 +36,6 @@ export default function Contsnts() {
     reservationDate: "",
     reservationParticipants: "",
     reservationStartTime: "",
-    reservationEndTime: "",
   });
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +53,10 @@ export default function Contsnts() {
   //시간 변경 시
   const timeChange = (
     reservationStartTime: string,
-    reservationEndTime: string
   ) => {
     setReservationData({
       ...reservationData,
       reservationStartTime,
-      reservationEndTime,
     });
   };
 
@@ -116,6 +120,7 @@ export default function Contsnts() {
         <PayInformation
           handlePay={handlePay}
           reservationData={reservationData}
+          payData={payData}
         />
       </div>
       {backAlertModal && (

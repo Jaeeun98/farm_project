@@ -48,10 +48,7 @@ export default function Time({ selectTime, timeChange, timeArr }: Props) {
             <button
               key={item.farmUseTimeDetailSlot}
               onClick={() =>
-                timeChange(
-                  item.farmUseTimeDetailSlot,
-                  timeArr[i + 1].farmUseTimeDetailSlot
-                )
+                timeChange(item.farmUseTimeDetailSlot)
               }
               // disabled={!possible || select}
               className={`${

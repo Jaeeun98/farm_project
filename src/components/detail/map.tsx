@@ -3,13 +3,16 @@
 import { GOOGL_MAP_KEY } from "@/utils/env";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import Image from "next/image";
+import CopyIcon from "../ui/copy_icon";
+import CopyButton from "../common/copy_button";
 
 interface Props {
   lat: number;
   lng: number;
+  zip: string;
 }
 
-export default function MapComponent({ lat, lng }: Props) {
+export default function MapComponent({ lat, lng, zip }: Props) {
   return (
     <div className="w-[24%] max-[425px] h-[218px] rounded-xl shadow-lg overflow-hidden">
       <APIProvider apiKey={GOOGL_MAP_KEY}>
@@ -24,15 +27,7 @@ export default function MapComponent({ lat, lng }: Props) {
       </APIProvider>
       <div className="flex justify-between px-10 items-center h-[20%] text-[14px]">
         <p className="text-text_default">주소지</p>
-        <button className="flex items-center">
-          <Image
-            src="/images/icon/copy.png"
-            alt="copy_icon"
-            width={24}
-            height={24}
-          />
-          <span className="text-point_color">복사</span>
-        </button>
+        <CopyButton copyText={zip}/>
       </div>
     </div>
   );

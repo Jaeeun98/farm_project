@@ -56,7 +56,7 @@ export default function Inputs() {
       <input
         onChange={(e) => inputChange(e)}
         className={`${input_style} border`}
-        type="userWebPw"
+        type="password"
         name="userWebPw"
         placeholder="비밀번호 입력"
       />

@@ -33,6 +33,8 @@ export interface FarmDetailData {
   farmUseTimeAndDetailTimeFormat: string;
   farmIntrcn: string;
   reviewList: ReviewData[];
+  farmEventDiscountOriginalAmt: string;
+  farmEventDiscountRate: string;
 }
 
 export interface ReservationData {
@@ -43,7 +45,8 @@ export interface ReservationData {
   reservationDate: string;
   reservationParticipants: string;
   reservationStartTime: string;
-  reservationEndTime?: string;
+
+
 }
 
 export interface ReviewData {
