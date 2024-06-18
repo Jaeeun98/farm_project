@@ -65,7 +65,6 @@ interface BannerImageList {
 
 //예약완료 후 리턴 데이터
 export interface PayData {
-  farnImgUrl: string;
   farmAccountNo: string;
   farmKindNm: string;
   farmName: string;

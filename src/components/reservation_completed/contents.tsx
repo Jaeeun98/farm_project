@@ -19,7 +19,7 @@ const testData = {
   reservationTime: "12:00 ~ 14:00",
   reviewStar: "0",
   reviewStarCnt: "0명",
-  farnImgUrl: "http://144.24.95.101:7000/api/v1/common/file/image/uJNDQnlxLG",
+  farnImgUrl: "",
 };
 
 export default function Contents() {
