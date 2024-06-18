@@ -1,6 +1,5 @@
 import { login } from "@/app/api/auth";
-import { Login } from "@/types/auth";
-import { SECRET } from "@/utils/env";
+
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 

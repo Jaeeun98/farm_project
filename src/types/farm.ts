@@ -63,6 +63,22 @@ interface BannerImageList {
   bannerImageUrl: string;
 }
 
+//예약완료 후 리턴 데이터
+export interface PayData {
+  farmAccountNo: string;
+  farmKindNm: string;
+  farmName: string;
+  farmOwnerTel: string;
+  farmUseTimeDetail: string;
+  reservationDate: string;
+  reservationId: string;
+  reservationName: string;
+  reservationParticipants: string;
+  reservationTime: string;
+  reviewStar: string;
+  reviewStarCnt: string;
+}
+
 //농장, 목장, 체험
 export type FarmKindKey = "01" | "02" | "03" | string;
 export type FarmKind = "농장" | "목장" | "체험";
