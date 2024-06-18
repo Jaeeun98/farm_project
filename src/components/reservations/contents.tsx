@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import FarmData from "@/components/reservations/farm_data";
@@ -11,18 +11,22 @@ import PayInformation from "./pay_information";
 import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
 import BackAlertModal from "./back_alert_modal";
+import { usePayData } from "@/context/pay_context";
 
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
+  const { setPayData } = usePayData();
   const searchParams = useSearchParams();
+  const router = useRouter();
+
+  if (!searchParams) return;
 
   const farmId = searchParams.get("farmId");
-  const payData= {
-    originalAmt: searchParams.get("originalAmt"),
-    discountRate: searchParams.get("discountRate"),
-    amt: searchParams.get("amt")  
-  }
-
+  const payData = {
+    originalAmt: searchParams.get("originalAmt") || "",
+    discountRate: searchParams.get("discountRate") || "",
+    amt: searchParams.get("amt") || "",
+  };
 
   const [initialized, setInitialized] = useState(false);
 
@@ -51,9 +55,7 @@ export default function Contsnts() {
   };
 
   //시간 변경 시
-  const timeChange = (
-    reservationStartTime: string,
-  ) => {
+  const timeChange = (reservationStartTime: string) => {
     setReservationData({
       ...reservationData,
       reservationStartTime,
@@ -69,9 +71,11 @@ export default function Contsnts() {
 
   //결제하기 클릭 시
   const handlePay = async () => {
-    //* 결제하기 후 결과 넣어야함 > 로그인 토큰 처리 한 후에 *
+    //* 에러처리 추가하기 *
     const result = await farmReservation(reservationData);
-    console.log(result);
+
+    setPayData(result);
+    router.push("/reservation_completed");
   };
 
   const handlePopState = useCallback(() => {

@@ -39,7 +39,7 @@ export default function Inputs() {
     } else {
       // 로그인 성공 처리 (예: 리다이렉트)
       alert("로그인에 성공했습니다.");
-      // window.location.href = "/";
+      window.location.href = "/";
     }
   };
 

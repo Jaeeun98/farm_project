@@ -36,15 +36,12 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     /**  refreshToken, UserId도 출력되도록 하기 */
     async jwt({ token, user }) {
-      console.log("token", token);
-      console.log("user", user);
       if (user) {
         token.id = user.id as string;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken as string;
       }
 
-      console.log("d", token);
       return token;
     },
     async session({ session, token, user }) {
