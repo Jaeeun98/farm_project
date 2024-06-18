@@ -31,5 +31,5 @@ export const getFarmDetailData = async (
 //농장예약(결제하기)
 export const farmReservation = async (payData: ReservationData) => {
   const response = await apiClient.post(`/reservation/farm`, payData);
-  return response.data.result;
+  return response.data;
 };

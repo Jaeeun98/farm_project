@@ -77,6 +77,7 @@ export interface PayData {
   reservationTime: string;
   reviewStar: string;
   reviewStarCnt: string;
+  farmMainImageUrl: string;
 }
 
 //농장, 목장, 체험

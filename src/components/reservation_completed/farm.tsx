@@ -16,7 +16,7 @@ export default function Farm({ farmData }: Props) {
     <div className="border mt-8 h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <Image
         className="rounded-box_rounded"
-        src={farmData.farnImgUrl}
+        src={farmData.farmMainImageUrl}
         alt="farm_img"
         width={353}
         height={192}

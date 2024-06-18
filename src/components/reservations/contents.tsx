@@ -74,7 +74,12 @@ export default function Contsnts() {
     //* 에러처리 추가하기 *
     const result = await farmReservation(reservationData);
 
-    setPayData(result);
+    if (result.status === "FAIL") {
+      alert(result.errorMessage);
+      return;
+    }
+
+    setPayData(result.result);
     router.push("/reservation_completed");
   };
 
