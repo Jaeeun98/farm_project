@@ -24,6 +24,7 @@ export const PayProvier = ({ children }: { children: ReactNode }) => {
     reservationTime: "",
     reviewStar: "",
     reviewStarCnt: "",
+    farmMainImageUrl: "",
   });
 
   return (

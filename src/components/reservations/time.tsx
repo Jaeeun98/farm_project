@@ -3,7 +3,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
 
 import { FarmTimeArr } from "@/types/farm";
 import { settings } from "./slider_setting";
@@ -11,27 +10,13 @@ import "./slider.css";
 
 //예약 시간 컴포넌트
 
-// const testData = {
-//   timeArr: [
-//     "10:00",
-//     "10:30",
-//     "11:00",
-//     "11:30",
-//     "12:00",
-//     "12:30",
-//     "13:00",
-//     "13:30",
-//   ], //예약시간
-//   unableArr: ["10:30", "13:30"], //예약 불가 시간
-// };
-
 const possible_time_style = "border border-point_color text-point_color";
 const unable_time_style = "bg-sub_color text-[#C6C6C6]";
 const select_time_style = "bg-point_color text-[white]";
 
 interface Props {
   selectTime: string;
-  timeChange: (start: string, end: string) => void;
+  timeChange: (start: string) => void;
   timeArr: FarmTimeArr[];
 }
 
@@ -47,9 +32,7 @@ export default function Time({ selectTime, timeChange, timeArr }: Props) {
           return (
             <button
               key={item.farmUseTimeDetailSlot}
-              onClick={() =>
-                timeChange(item.farmUseTimeDetailSlot)
-              }
+              onClick={() => timeChange(item.farmUseTimeDetailSlot)}
               // disabled={!possible || select}
               className={`${
                 select ? select_time_style : possible_time_style
