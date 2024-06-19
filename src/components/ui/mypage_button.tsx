@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Mypage() {
+export default function MypageButton() {
   return (
     <Link href={"/mypage"}>
       <Image
