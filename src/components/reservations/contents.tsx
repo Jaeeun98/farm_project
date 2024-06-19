@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { Suspense } from "react";
 
 import FarmData from "@/components/reservations/farm_data";
 import BackButton from "@/components/ui/back_button";
@@ -114,30 +115,32 @@ export default function Contsnts() {
   if (!farmData) return <></>;
 
   return (
-    <section className="px-layout_px border-t mb-24">
-      <BackButton text={"예약 확인 및 결제"} />
-      <FarmData inputChange={inputChange} farmData={farmData} />
-      <div className="flex gap-6 mt-6">
-        <div className="w-[75%]">
-          <Time
-            timeArr={farmData.farmUseTimeDetailList}
-            selectTime={reservationData.reservationStartTime}
-            timeChange={timeChange}
+    <Suspense>
+      <section className="px-layout_px border-t mb-24">
+        <BackButton text={"예약 확인 및 결제"} />
+        <FarmData inputChange={inputChange} farmData={farmData} />
+        <div className="flex gap-6 mt-6">
+          <div className="w-[75%]">
+            <Time
+              timeArr={farmData.farmUseTimeDetailList}
+              selectTime={reservationData.reservationStartTime}
+              timeChange={timeChange}
+            />
+            <BookerInformation inputChange={inputChange} />
+          </div>
+          <PayInformation
+            handlePay={handlePay}
+            reservationData={reservationData}
+            payData={payData}
           />
-          <BookerInformation inputChange={inputChange} />
         </div>
-        <PayInformation
-          handlePay={handlePay}
-          reservationData={reservationData}
-          payData={payData}
-        />
-      </div>
-      {backAlertModal && (
-        <BackAlertModal
-          backAlertModalClose={backAlertModalClose}
-          handleBack={handleBack}
-        />
-      )}
-    </section>
+        {backAlertModal && (
+          <BackAlertModal
+            backAlertModalClose={backAlertModalClose}
+            handleBack={handleBack}
+          />
+        )}
+      </section>
+    </Suspense>
   );
 }
