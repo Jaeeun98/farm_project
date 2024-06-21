@@ -80,6 +80,27 @@ export interface PayData {
   farmMainImageUrl: string;
 }
 
+//예약정보
+export interface History {
+  reservationId: string;
+  reservationStatus: string;
+  reservationStatusNm: string;
+  farmAccountNo: string;
+  farmKindNm: string;
+  farmName: string;
+  farmZip: string;
+  farmOwnerTel: string;
+  farmUseTimeDetail: string;
+  reservationDate: string;
+  reservationParticipants: string;
+  reservationStartTime: string;
+  reservationEndTime: string;
+  reservationName: string;
+  reservationEmail: string;
+  reservationTel: string;
+  farmUseAmt: string;
+}
+
 //농장, 목장, 체험
 export type FarmKindKey = "01" | "02" | "03" | string;
 export type FarmKind = "농장" | "목장" | "체험";

@@ -1,9 +1,11 @@
 import { login } from "@/app/api/auth";
+import { SECRET } from "@/utils/env";
 
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
+  secret: SECRET,
   providers: [
     CredentialsProvider({
       // 이 부분을 사용자 정의로 수정
@@ -29,6 +31,12 @@ const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: SECRET,
+  },
   pages: {
     signOut: "/login",
   },
@@ -43,6 +51,7 @@ const authOptions: NextAuthOptions = {
 
       return token;
     },
+
     async session({ session, token, user }) {
       // console.log("session", session);
       // console.log("token", token);

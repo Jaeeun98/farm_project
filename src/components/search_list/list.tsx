@@ -30,9 +30,6 @@ export default function List({ rangeData }: Props) {
         return "highUseAmt";
       case "가격 낮은순":
         return "lowUseAmt";
-      //*인기순 key 변경해야 함
-      case "인기순":
-        return "createDate";
       default:
         "";
     }

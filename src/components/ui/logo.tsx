@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 //로고 컴포넌트
@@ -10,7 +11,7 @@ export default function Logo({ size = "s" }: Props) {
   return (
     <Link href={"/"}>
       <h1 className={`text-point_color ${textSize} font-bold cursor-pointer`}>
-        logo
+        <Image src={"/images/logo.png"} alt="logo" width={38} height={38} />
       </h1>
     </Link>
   );

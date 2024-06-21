@@ -1,5 +1,5 @@
 "use client";
-export const rangeArr = ["최신순", "인기순", "가격 높은순", "가격 낮은순"];
+export const rangeArr = ["최신순", "가격 높은순", "가격 낮은순"];
 
 interface Props {
   rangeData: string;
