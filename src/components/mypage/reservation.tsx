@@ -7,6 +7,7 @@ import Time from "../ui/time";
 import Addr from "../ui/addr";
 import Calenadr from "../ui/calendar";
 import Email from "../ui/email";
+import ReservationButton from "./reservation_button";
 
 interface Props {
   data: History;
@@ -14,21 +15,7 @@ interface Props {
 
 const title = `my-2 text-[20px] font-bold`;
 
-const waiting_style = `bg-[#FF5000] text-[#fff]`;
-const cancel_style = `border border-point_color text-point_color`;
-const completed_style = `bg-sub_color text-text_sub`;
-
 export default function Reservation({ data }: Props) {
-  const buttonStyle = (text: string) => {
-    switch (text) {
-      case "예약대기":
-        return waiting_style;
-      case "예약확정":
-        return completed_style;
-      case "예약취소":
-        return cancel_style;
-    }
-  };
   return (
     <div className="border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <div className="flex">
@@ -72,12 +59,10 @@ export default function Reservation({ data }: Props) {
           </div>
         </div>
         <div className="flex flex-wrap w-[120px] content-between justify-end">
-          <button
-            className={`w-[120px] h-[48px] rounded-[8px] ${buttonStyle(
-              data.reservationStatusNm
-            )}`}>
-            {data.reservationStatusNm}
-          </button>
+          <ReservationButton
+            text={data.reservationStatusNm}
+            id={data.reservationId}
+          />
           <p className="text-[28px] font-bold">{data.farmUseAmt}</p>
         </div>
       </div>

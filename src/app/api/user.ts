@@ -17,3 +17,11 @@ export const userFarmHistory = async () => {
   const response = await authApiClient.get(`/reservation/farm-history`);
   return response?.data;
 };
+
+//예약 취소
+export const farmCancel = async (reservationId: string) => {
+  const response = await authApiClient.put(`/reservation/farm-cancel`, {
+    reservationId,
+  });
+  return response?.data;
+};
