@@ -13,9 +13,9 @@ export default function BackAlertModal({
 }: Props) {
   return (
     <div className="flex justify-center items-center w-full h-full absolute top-0 left-0 bg-text_default bg-opacity-75 overflow-hidden z-50">
-      <div className="bg-[#fff] rounded-md w-[335px] h-[185px] text-center py-8 px-4">
+      <div className="bg-[#fff] rounded-md  text-center py-8 px-4">
         <div className="text-text_default font-bold text-[20px]">{text}</div>
-        <div className="flex mt-4 gap-2 justify-center">
+        <div className="flex mt-6 gap-2 justify-center">
           <button
             onClick={handleYClick}
             className={`${button_style} border border-[#696969] text-[#696969]`}>

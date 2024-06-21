@@ -134,7 +134,7 @@ export default function Contsnts() {
       </div>
       {backAlertModal && (
         <BackAlertModal
-          text={"<p>작성중인 정보가 있습니다.<p> <p>뒤로 가시겠습니까?<p>"}
+          text={"작성중인 정보가 있습니다. 뒤로 가시겠습니까?"}
           modalClose={backAlertModalClose}
           handleYClick={handleBack}
         />

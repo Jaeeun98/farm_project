@@ -17,7 +17,7 @@ const title = `my-2 text-[20px] font-bold`;
 
 export default function Reservation({ data }: Props) {
   return (
-    <div className="border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
+    <div className="mb-6 border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <div className="flex">
         <Image
           className="rounded-box_rounded"
