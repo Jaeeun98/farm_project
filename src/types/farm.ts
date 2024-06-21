@@ -99,6 +99,7 @@ export interface History {
   reservationEmail: string;
   reservationTel: string;
   farmUseAmt: string;
+  farmMainImageUrl: string;
 }
 
 //농장, 목장, 체험

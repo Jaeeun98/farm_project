@@ -21,7 +21,7 @@ export default function Reservation({ data }: Props) {
       <div className="flex">
         <Image
           className="rounded-box_rounded"
-          src={""}
+          src={data.farmMainImageUrl}
           alt="farm_img"
           width={353}
           height={192}
