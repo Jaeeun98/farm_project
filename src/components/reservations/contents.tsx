@@ -10,7 +10,7 @@ import BookerInformation from "./booker_information";
 import PayInformation from "./pay_information";
 import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
-import BackAlertModal from "./back_alert_modal";
+import BackAlertModal from "../common/back_alert_modal";
 import { usePayData } from "@/context/pay_context";
 
 //예약확인 및 결제 컨텐츠
@@ -134,8 +134,9 @@ export default function Contsnts() {
       </div>
       {backAlertModal && (
         <BackAlertModal
-          backAlertModalClose={backAlertModalClose}
-          handleBack={handleBack}
+          text={"<p>작성중인 정보가 있습니다.<p> <p>뒤로 가시겠습니까?<p>"}
+          modalClose={backAlertModalClose}
+          handleYClick={handleBack}
         />
       )}
     </section>

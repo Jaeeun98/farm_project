@@ -4,7 +4,7 @@ import {
   FarmSearchData,
   ReservationData,
 } from "@/types/farm";
-import { apiClient } from ".";
+import { apiClient, authApiClient } from ".";
 
 //main, 농장 리스트 조회
 export const getFarmList = async (
@@ -30,6 +30,6 @@ export const getFarmDetailData = async (
 
 //농장예약(결제하기)
 export const farmReservation = async (payData: ReservationData) => {
-  const response = await apiClient.post(`/reservation/farm`, payData);
+  const response = await authApiClient.post(`/reservation/farm`, payData);
   return response.data;
 };
