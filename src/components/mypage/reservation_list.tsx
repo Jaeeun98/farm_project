@@ -7,7 +7,6 @@ import Reservation from "./reservation";
 export default async function ReservationList() {
   const result = await userFarmHistory();
 
-  console.log(result);
   return (
     <div className="mt-12">
       <h2 className="text-[24px] font-semibold">예약 정보</h2>
