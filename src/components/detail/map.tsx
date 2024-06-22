@@ -25,9 +25,9 @@ export default function MapComponent({ lat, lng, zip }: Props) {
         />
         <Marker position={{ lat, lng }} />
       </APIProvider>
-      <div className="flex justify-between px-10 items-center h-[20%] text-[14px]">
-        <p className="text-text_default">주소지</p>
-        <CopyButton copyText={zip}/>
+      <div className="flex justify-between px-4 items-center h-[20%] text-[14px]">
+        <p className="text-text_default">{zip}</p>
+        <CopyButton copyText={zip} />
       </div>
     </div>
   );
