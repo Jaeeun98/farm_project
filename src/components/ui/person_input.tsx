@@ -3,10 +3,11 @@ import Image from "next/image";
 interface Props {
   size: number;
   changeData: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
 //인원수 선택
-export default function PersonInput({ size, changeData }: Props) {
+export default function PersonInput({ size, changeData, value }: Props) {
   return (
     <div
       className={`relative bg-sub_color rounded-sm  flex items-center w-[${size}%]`}>
@@ -24,7 +25,9 @@ export default function PersonInput({ size, changeData }: Props) {
         name="farmMaxUserCnt"
         min={1}
         onChange={(e) => changeData(e)}
+        defaultValue={value}
       />
+      <span className="absolute right-3">명</span>
     </div>
   );
 }

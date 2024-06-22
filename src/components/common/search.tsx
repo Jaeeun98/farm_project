@@ -19,12 +19,15 @@ interface Props {
 //검색 컴포넌트
 export default function Search({ detail = false, farmData = "" }: Props) {
   const router = useRouter();
+  const date = new Date();
+  const nextDay = new Date(date);
+  nextDay.setDate(date.getDate() + 1);
 
   const [searchData, setSearchData] = useState({
     farmKind: farmData,
     farmName: "",
-    farmUseDay: "",
-    farmMaxUserCnt: "",
+    farmUseDay: nextDay.toISOString().split("T")[0],
+    farmMaxUserCnt: "2",
   });
 
   //검색 데이터 변경
@@ -61,8 +64,16 @@ export default function Search({ detail = false, farmData = "" }: Props) {
           onChange={(e) => changeSearchData(e)}
         />
       </div>
-      <CalendarInput size={18} changeData={changeSearchData} />
-      <PersonInput size={18} changeData={changeSearchData} />
+      <CalendarInput
+        size={18}
+        changeData={changeSearchData}
+        value={searchData.farmUseDay}
+      />
+      <PersonInput
+        size={18}
+        changeData={changeSearchData}
+        value={searchData.farmMaxUserCnt}
+      />
 
       <button
         onClick={handleSearch}
