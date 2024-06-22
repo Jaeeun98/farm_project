@@ -20,7 +20,7 @@ export default function Contents() {
     const filterkey = getFilterKey(selectFilter);
     const result = await getFarmList(filterkey);
 
-    setContentsData(result.slice(0, 4));
+    setContentsData(result.slice(0, 5));
   };
 
   useEffect(() => {

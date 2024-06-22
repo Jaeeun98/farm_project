@@ -14,7 +14,7 @@ export default function ContentsList({ contentsData }: Props) {
   return (
     <ul className="flex w-full gap-4">
       {contentsData?.map((item) => (
-        <li key={item.farmId} className="w-[24.3%]">
+        <li key={item.farmId} className="w-[19.3%]">
           <Link href={`/detail/${item.farmId}`}>
             <Image
               className="w-[100%] h-[193px] rounded-box_rounded"
