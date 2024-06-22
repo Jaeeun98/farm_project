@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
+import nextDate from "./nextDate";
 
 const InputBox = `relative bg-sub_color rounded-sm flex items-center`;
 const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
@@ -19,14 +20,11 @@ interface Props {
 //검색 컴포넌트
 export default function Search({ detail = false, farmData = "" }: Props) {
   const router = useRouter();
-  const date = new Date();
-  const nextDay = new Date(date);
-  nextDay.setDate(date.getDate() + 1);
 
   const [searchData, setSearchData] = useState({
     farmKind: farmData,
     farmName: "",
-    farmUseDay: nextDay.toISOString().split("T")[0],
+    farmUseDay: nextDate(),
     farmMaxUserCnt: "2",
   });
 
