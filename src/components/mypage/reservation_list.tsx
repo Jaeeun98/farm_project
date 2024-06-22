@@ -10,7 +10,7 @@ export default async function ReservationList() {
   return (
     <div className="mt-12">
       <h2 className="text-[24px] font-semibold">예약 정보</h2>
-      <div className="mt-6 mb-4">
+      <div className="mt-6">
         {result.result.length === 0 ? (
           <NoReservation />
         ) : (

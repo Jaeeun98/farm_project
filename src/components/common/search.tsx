@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
 
-const InputBox = `relative bg-sub_color rounded-sm  flex items-center`;
+const InputBox = `relative bg-sub_color rounded-sm flex items-center`;
 const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
 const ImgStyle = `absolute left-2`;
 
@@ -61,11 +61,12 @@ export default function Search({ detail = false, farmData = "" }: Props) {
           onChange={(e) => changeSearchData(e)}
         />
       </div>
-      <CalendarInput size={17} changeData={changeSearchData} />
-      <PersonInput size={17} changeData={changeSearchData} />
+      <CalendarInput size={18} changeData={changeSearchData} />
+      <PersonInput size={18} changeData={changeSearchData} />
+
       <button
         onClick={handleSearch}
-        className="bg-point_color text-white rounded-md w-[16%] px-3 py-2">
+        className="bg-point_color text-white rounded-md w-[18%] px-3 py-2">
         {detail ? "재검색" : "검색"}
       </button>
     </div>

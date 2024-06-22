@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Search from "../common/search";
 import { filterArr } from "../common/filterArr";
+import MobileSearch from "../common/mobile_search";
 
 //main, 베너 검색페이지
 export default function BannerSearch() {
@@ -15,7 +16,7 @@ export default function BannerSearch() {
   };
   return (
     <div className="bg-white w-full h-[158px] rounded-lg">
-      <div className="flex p-4 border-b border-b-[#ddd]">
+      <div className="lex p-4 border-b border-b-[#ddd] ">
         {filterArr.map((item) => (
           <button
             onClick={() => farmChange(item)}
@@ -24,8 +25,7 @@ export default function BannerSearch() {
               item === farmData
                 ? " font-bold text-point_color"
                 : "text-text_sub"
-            }`}
-          >
+            }`}>
             {item}
           </button>
         ))}
