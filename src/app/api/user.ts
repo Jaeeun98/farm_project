@@ -20,6 +20,7 @@ export const userFarmHistory = async () => {
 
 //예약 취소
 export const farmCancel = async (reservationId: string) => {
+  console.log(authApiClient);
   const response = await authApiClient.put(`/reservation/farm-cancel`, {
     reservationId,
   });

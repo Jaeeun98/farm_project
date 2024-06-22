@@ -18,7 +18,7 @@ const title = `my-2 text-[20px] font-bold`;
 export default function Reservation({ data }: Props) {
   return (
     <div className="mb-6 border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
-      <div className="flex">
+      <div className="flex gap-8">
         <Image
           className="rounded-box_rounded"
           src={data.farmMainImageUrl}
@@ -43,7 +43,9 @@ export default function Reservation({ data }: Props) {
             <Addr addr={data.farmZip} />
             <Call phoneNumber={data.farmOwnerTel} />
             <Calenadr date={data.reservationDate} />
-            <Time time={data.farmUseTimeDetail} />
+            <Time
+              time={`${data.reservationStartTime} ~ ${data.reservationEndTime}`}
+            />
           </div>
         </div>
       </div>
@@ -58,7 +60,7 @@ export default function Reservation({ data }: Props) {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap w-[120px] content-between justify-end">
+        <div className="flex flex-wrap w-[140px] content-between justify-end">
           <ReservationButton
             text={data.reservationStatusNm}
             id={data.reservationId}

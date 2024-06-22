@@ -33,13 +33,16 @@ export default function ReservationButton({ text, id }: Props) {
 
     if (result.status === "SUCCESS") alert("예약이 취소되었습니다.");
     else alert(result.errorMessage);
+
+    cancelModalClose();
   };
 
-  const cancelModalClose = () => setAlertModal(false);
+  const cancelModalClose = () => setAlertModal(!alertModal);
 
   return (
     <>
       <button
+        onClick={cancelModalClose}
         disabled={!(text === "예약취소")}
         className={`w-[120px] h-[48px] rounded-[8px] ${buttonStyle(text)}`}>
         {text}

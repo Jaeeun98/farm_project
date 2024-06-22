@@ -14,7 +14,9 @@ export default async function ReservationList() {
         {result.result.length === 0 ? (
           <NoReservation />
         ) : (
-          result.result.map((item: History) => <Reservation data={item} />)
+          result.result.map((item: History) => (
+            <Reservation key={item.reservationId} data={item} />
+          ))
         )}
       </div>
     </div>
