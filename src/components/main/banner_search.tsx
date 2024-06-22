@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import Search from "../common/search";
 import { filterArr } from "../common/filterArr";
-import MobileSearch from "../common/mobile_search";
 
 //main, 베너 검색페이지
 export default function BannerSearch() {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const big_style = `w-[280px] h-[95px]`;
+const big_style = `w-[180px] h-[95px]`;
 const small_style = `w-[58px]`;
 
 interface Props {
