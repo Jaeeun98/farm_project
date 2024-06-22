@@ -1,3 +1,6 @@
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+
 import ImgContents from "./img_contents";
 import StarScore from "../ui/star_score";
 import Review from "./review";
@@ -6,22 +9,24 @@ import Link from "next/link";
 import Call from "../ui/call";
 import Time from "../ui/time";
 import { getFarmDetailData } from "@/app/api/farm";
+import ReservationButton from "./reservation_button";
 
 interface Props {
   farmId: string;
 }
 
 const title_style = `font-bold text-[20px] mb-3`;
-const pay_sub_text_style = `flex justify-between text-[14px]`;
 
 export default async function Contents({ farmId }: Props) {
   const farmData = await getFarmDetailData(farmId);
+  const session = await getServerSession(authOptions);
+
   const payData = {
-    originalAmt : farmData.farmEventDiscountOriginalAmt,
-    discountRate : farmData.farmEventDiscountRate,
-    amt: farmData.farmUseAmt
-  }
-    
+    originalAmt: farmData.farmEventDiscountOriginalAmt,
+    discountRate: farmData.farmEventDiscountRate,
+    amt: farmData.farmUseAmt,
+  };
+
   return (
     <section className="px-layout_px text-text_default pb-24">
       <ImgContents imgs={farmData.bannerImageList} />
@@ -58,24 +63,18 @@ export default async function Contents({ farmId }: Props) {
         </div>
         <div className="w-[24%] max-[425px] h-[180px] border rounded-2xl px-10 py-5 shadow-md">
           <p className={title_style}>결제정보</p>
-          {/* <div className={pay_sub_text_style}>
-            <p className="text-text_sub">날짜</p>
-            <p className="text-text_default font-semibold">00월 00일</p>
-          </div>
-          <div className={`${pay_sub_text_style} border-b mb-2 pb-4`}>
-            <p className="text-text_sub">인원</p>
-            <p className="text-text_default font-semibold">30명</p>
-          </div> */}
           <p className=" text-right font-bold text-[20px]">10,000원</p>
-          <Link
-            href={{
-              pathname: "/reservations",
-              query: { farmId, ...payData },
-            }}>
-            <button className="w-full bg-point_color mt-4 py-3 rounded-lg text-white">
-              예약하기
-            </button>
-          </Link>
+          {session ? (
+            <Link
+              href={{
+                pathname: "/reservations",
+                query: { farmId, ...payData },
+              }}>
+              <ReservationButton session={true} />
+            </Link>
+          ) : (
+            <ReservationButton session={false} />
+          )}
         </div>
       </div>
     </section>
