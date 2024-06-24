@@ -8,8 +8,6 @@ import { usePayData } from "@/context/pay_context";
 
 export default function Contents() {
   const { payData } = usePayData();
-  // if (payData?.farmAccountNo === "") return <></>;
-    //
 
   return (
     <div className="px-layout_px text-text_default">

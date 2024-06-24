@@ -13,6 +13,7 @@ export default function BannerSearch() {
   const farmChange = (farm: string) => {
     setFarmData(farm);
   };
+
   return (
     <div className="bg-white w-full h-[158px] rounded-lg">
       <div className="lex p-4 border-b border-b-[#ddd] ">

@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
-import nextDate from "./nextDate";
+import { useFarmSearchData } from "@/context/farm_search_context";
 
 const InputBox = `relative bg-sub_color rounded-sm flex items-center`;
 const InputStyle = `bg-sub_color w-full ps-9 pe-3 py-2`;
@@ -20,12 +20,14 @@ interface Props {
 //검색 컴포넌트
 export default function Search({ detail = false, farmData = "" }: Props) {
   const router = useRouter();
+  const { setFarmSearchData } = useFarmSearchData();
+  const { farmSearchData } = useFarmSearchData();
 
   const [searchData, setSearchData] = useState({
     farmKind: farmData,
-    farmName: "",
-    farmUseDay: nextDate(),
-    farmMaxUserCnt: "2",
+    farmName: farmSearchData.farmName as string,
+    farmUseDay: farmSearchData.farmUseDay as string,
+    farmMaxUserCnt: farmSearchData.farmMaxUserCnt as string,
   });
 
   //검색 데이터 변경
@@ -41,8 +43,17 @@ export default function Search({ detail = false, farmData = "" }: Props) {
   //검색 버튼 클릭시, 검색 리스트 페이지로 이동
   const handleSearch = async () => {
     const queryString = new URLSearchParams(searchData).toString();
+
+    setFarmSearchData(searchData);
     router.push(`/search_list?${queryString}`);
   };
+
+  useEffect(() => {
+    setSearchData({
+      ...searchData,
+      farmKind: farmData,
+    });
+  }, [farmData]);
 
   return (
     <div className="flex text-[14px] w-full h-[50%] gap-4 items-center p-6">
@@ -59,6 +70,7 @@ export default function Search({ detail = false, farmData = "" }: Props) {
           type="search"
           placeholder="검색"
           name="farmName"
+          defaultValue={searchData.farmName}
           onChange={(e) => changeSearchData(e)}
         />
       </div>

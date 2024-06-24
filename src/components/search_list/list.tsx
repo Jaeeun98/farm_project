@@ -10,6 +10,7 @@ import StarScore from "../ui/star_score";
 import Addr from "../ui/addr";
 import Time from "../ui/time";
 import Link from "next/link";
+import { useFarmSearchData } from "@/context/farm_search_context";
 
 interface Props {
   rangeData: string;
@@ -19,6 +20,7 @@ interface Props {
 export default function List({ rangeData }: Props) {
   const searchParams = useSearchParams();
   const [listData, setListData] = useState<FarmData[]>([]);
+  const { farmSearchData } = useFarmSearchData();
 
   if (!searchParams) return <></>;
 
@@ -37,16 +39,9 @@ export default function List({ rangeData }: Props) {
 
   //검색 리스트 가져오기
   const handleGetSearhData = async () => {
-    const farmKind = searchParams.get("farmKind") || "";
-    const farmName = searchParams.get("farmName") || "";
-    const farmUseDay = searchParams.get("farmUseDay") || "";
-    const farmMaxUserCnt = searchParams.get("farmMaxUserCnt") || "";
-
     const result = await getFarmSearchList({
-      farmKind: getFilterKey(farmKind),
-      farmName,
-      farmUseDay,
-      farmMaxUserCnt,
+      ...farmSearchData,
+      farmKind: getFilterKey(farmSearchData.farmKind),
       orderByKind: getRangeKey() as string,
     });
 
@@ -57,13 +52,19 @@ export default function List({ rangeData }: Props) {
     }
   };
 
+  console.log("listData", listData);
+
+  useEffect(() => {
+    handleGetSearhData();
+  }, [farmSearchData]);
+
   useEffect(() => {
     handleGetSearhData();
   }, [rangeData]);
 
   return (
     <Suspense>
-      <ul className="w-full mt-10 flex gap-2 justify-between">
+      <ul className="w-full mt-10 flex gap-2 justify-between flex-wrap">
         {listData.map((item) => (
           <li
             key={item.farmId}

@@ -3,7 +3,7 @@ export interface FarmSearchData {
   farmName?: string;
   farmUseDay?: string;
   farmMaxUserCnt?: string;
-  orderByKind: string;
+  orderByKind?: string;
 }
 
 export interface FarmData {
