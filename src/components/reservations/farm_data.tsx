@@ -4,17 +4,21 @@ import Call from "../ui/call";
 import Time from "../ui/time";
 import CalendarInput from "../ui/calendar_input";
 import PersonInput from "../ui/person_input";
-import { FarmDetailData } from "@/types/farm";
-import nextDate from "../common/nextDate";
+import { FarmDetailData, ReservationData } from "@/types/farm";
 import Calenadr from "../ui/calendar";
 
 interface Props {
   inputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   farmData: FarmDetailData;
+  reservationData: ReservationData;
 }
 
 //예약 확인 및 결제, 농장 데이터
-export default function FarmData({ inputChange, farmData }: Props) {
+export default function FarmData({
+  inputChange,
+  farmData,
+  reservationData,
+}: Props) {
   return (
     <div className="border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <Image
@@ -40,9 +44,13 @@ export default function FarmData({ inputChange, farmData }: Props) {
           <CalendarInput
             size={50}
             changeData={inputChange}
-            value={nextDate()}
+            value={reservationData.reservationDate}
           />
-          <PersonInput size={50} changeData={inputChange} value="2" />
+          <PersonInput
+            size={50}
+            changeData={inputChange}
+            value={reservationData.reservationParticipants}
+          />
         </div>
       </div>
     </div>
