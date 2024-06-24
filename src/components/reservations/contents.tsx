@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Suspense } from "react";
+import { getUserInfo } from "@/app/api/user";
 
 import FarmData from "@/components/reservations/farm_data";
 import BackButton from "@/components/ui/back_button";
@@ -13,6 +14,7 @@ import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
 import BackAlertModal from "../common/back_alert_modal";
 import { usePayData } from "@/context/pay_context";
+import nextDate from "../common/nextDate";
 
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
@@ -38,8 +40,8 @@ export default function Contsnts() {
     reservationName: "",
     reservationEmail: "",
     reservationTel: "",
-    reservationDate: "",
-    reservationParticipants: "",
+    reservationDate: nextDate(),
+    reservationParticipants: "2",
     reservationStartTime: "",
   });
 
@@ -72,7 +74,6 @@ export default function Contsnts() {
 
   //결제하기 클릭 시
   const handlePay = async () => {
-    //* 에러처리 추가하기 *
     const result = await farmReservation(reservationData);
 
     if (result.status === "FAIL") {
@@ -99,6 +100,18 @@ export default function Contsnts() {
   //모달 close
   const backAlertModalClose = () => setBackAlertModal(false);
 
+  const handleUserInfo = async () => {
+    const result = await getUserInfo();
+    const { userEamil, userName, userTel } = result.result;
+
+    setReservationData({
+      ...reservationData,
+      reservationName: userName,
+      reservationEmail: userEamil,
+      reservationTel: userTel,
+    });
+  };
+
   useEffect(() => {
     if (!initialized) {
       history.pushState(null, "", location.href); // 초기 상태 푸시
@@ -110,6 +123,7 @@ export default function Contsnts() {
 
   useEffect(() => {
     handleGetFarmDetailData();
+    handleUserInfo();
   }, []);
 
   if (!farmData) return <></>;
@@ -118,7 +132,11 @@ export default function Contsnts() {
     <Suspense>
       <section className="px-layout_px border-t mb-24">
         <BackButton text={"예약 확인 및 결제"} />
-        <FarmData inputChange={inputChange} farmData={farmData} />
+        <FarmData
+          reservationData={reservationData}
+          inputChange={inputChange}
+          farmData={farmData}
+        />
         <div className="flex gap-6 mt-6">
           <div className="w-[75%]">
             <Time
@@ -126,7 +144,10 @@ export default function Contsnts() {
               selectTime={reservationData.reservationStartTime}
               timeChange={timeChange}
             />
-            <BookerInformation inputChange={inputChange} />
+            <BookerInformation
+              inputChange={inputChange}
+              reservationData={reservationData}
+            />
           </div>
           <PayInformation
             handlePay={handlePay}
@@ -134,15 +155,14 @@ export default function Contsnts() {
             payData={payData}
           />
         </div>
-      {backAlertModal && (
-        <BackAlertModal
-          text={"작성중인 정보가 있습니다. 뒤로 가시겠습니까?"}
-          modalClose={backAlertModalClose}
-          handleYClick={handleBack}
-        />
-      )}
-    </section>
-
+        {backAlertModal && (
+          <BackAlertModal
+            text={"작성중인 정보가 있습니다. 뒤로 가시겠습니까?"}
+            modalClose={backAlertModalClose}
+            handleYClick={handleBack}
+          />
+        )}
+      </section>
     </Suspense>
   );
 }

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const label_style = "text-text_sub ";
 const text_box_style = "flex w-full justify-between text-[14px] ";
 
-const disabled_pay_button_style = "bg-sub_color text-[#C6C6C6] ";
+const disabled_pay_button_style = "bg-sub_color text-[#C6C6C6] cursor-default ";
 const pay_button_style = "bg-point_color text-white";
 
 interface Props {
@@ -59,7 +59,7 @@ export default function PayInformation({
           </div>
           <div className={`${text_box_style} my-2`}>
             <p className={`${label_style}`}>인원</p>
-            <p>{reservationData.reservationParticipants}</p>
+            <p>{reservationData.reservationParticipants}명</p>
           </div>
           <div className={`${text_box_style}`}>
             <p className={`${label_style}`}>이벤트</p>
@@ -85,7 +85,7 @@ export default function PayInformation({
           </p>
         </div>
         <button
-          onClick={handlePay}
+          onClick={handleSetAreement() ? handlePay : () => {}}
           className={`${
             handleSetAreement() ? pay_button_style : disabled_pay_button_style
           } w-full rounded-md px-3 py-3 mt-6`}>

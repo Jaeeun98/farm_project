@@ -4,7 +4,6 @@ import LogoutButton from "./logout_button";
 import Email from "../ui/email";
 import Calenadr from "../ui/calendar";
 import Unregister from "./unregister";
-// import Unregister from "./unregister";
 
 export default async function Userinfo() {
   const result = await getUserInfo();

@@ -1,12 +1,18 @@
+import { ReservationData } from "@/types/farm";
+
 const input_style = "border-b w-full p-2 mt-2";
 const input_box_style = "text-[14px] mb-8 text-text_default";
 
 interface Props {
   inputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  reservationData: ReservationData;
 }
 
 //예약자 정보
-export default function BookerInformation({ inputChange }: Props) {
+export default function BookerInformation({
+  inputChange,
+  reservationData,
+}: Props) {
   return (
     <div
       className={`mt-6 border w-full h-[356px] shadow-lg rounded-box_rounded px-8 py-6`}>
@@ -19,6 +25,7 @@ export default function BookerInformation({ inputChange }: Props) {
           type="text"
           id="reservationName"
           name="reservationName"
+          defaultValue={reservationData.reservationName}
           placeholder="이름 입력"
         />
       </div>
@@ -30,6 +37,7 @@ export default function BookerInformation({ inputChange }: Props) {
           type="number"
           name="reservationTel"
           id="reservationTel"
+          defaultValue={reservationData.reservationTel}
           placeholder="휴대폰번호 입력('-'제외)"
         />
       </div>
@@ -41,6 +49,7 @@ export default function BookerInformation({ inputChange }: Props) {
           type="text"
           name="reservationEmail"
           id="reservationEmail"
+          defaultValue={reservationData.reservationEmail}
           placeholder="이메일 주소 입력"
         />
       </div>

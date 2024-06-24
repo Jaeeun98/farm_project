@@ -22,6 +22,7 @@ export const authApiClient = axios.create({
   },
 });
 
+//토큰 저장
 authApiClient.interceptors.request.use(
   async (config) => {
     let session = await getSession();
@@ -35,6 +36,20 @@ authApiClient.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+//401에러 발생시 로그인 페이지로 이동
+authApiClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      alert("세션이 만료되었습니다. 다시 로그인해 주세요.");
+      return;
+    }
     return Promise.reject(error);
   }
 );
