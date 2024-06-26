@@ -9,6 +9,8 @@ export default async function Userinfo() {
   const result = await getUserInfo();
   const userData = result?.result;
 
+  // if (window === undefined) return;
+  // if (!result) return;
   if (result?.status !== "SUCCESS") alert(result.errorMessage);
 
   return (

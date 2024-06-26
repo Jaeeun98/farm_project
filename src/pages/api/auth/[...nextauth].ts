@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
             accessToken: result.accessToken,
             refreshToken: result.refreshTokenId,
             id: result.userWebId,
+            accessExpires: Math.floor(Date.now() / 1000) + 4 * 60,
           };
 
           if (status === "SUCCESS") return user;
@@ -39,6 +40,7 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: "jwt",
+    maxAge: 4 * 60,
   },
   jwt: {
     secret: SECRET,

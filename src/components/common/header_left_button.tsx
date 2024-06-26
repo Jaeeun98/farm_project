@@ -11,11 +11,17 @@ export default function HeaderLeftButton() {
   const { data: session } = useSession();
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleUserInfo = async () => {
+  const handleUserInfo = async () => {
+    if (!session) return;
+    try {
       const result = await getUserInfo();
-    };
+      console.log(result);
+    } catch (error) {
+      alert("로그인이 만료되었습니다.");
+    }
+  };
 
+  useEffect(() => {
     handleUserInfo;
   }, []);
 
