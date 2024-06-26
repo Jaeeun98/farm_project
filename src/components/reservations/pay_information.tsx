@@ -1,7 +1,10 @@
 "use client";
 
+import { farmReservation } from "@/app/api/farm";
 import { ReservationData } from "@/types/farm";
 import { useEffect, useState } from "react";
+import { usePayData } from "@/context/pay_context";
+import { useRouter } from "next/navigation";
 
 const label_style = "text-text_sub ";
 const text_box_style = "flex w-full justify-between text-[14px] ";
@@ -11,7 +14,6 @@ const pay_button_style = "bg-point_color text-white";
 
 interface Props {
   reservationData: ReservationData;
-  handlePay: () => void;
   payData: {
     originalAmt: string;
     discountRate: string;
@@ -20,13 +22,10 @@ interface Props {
 }
 
 //결제정보
-export default function PayInformation({
-  reservationData,
-  handlePay,
-  payData,
-}: Props) {
+export default function PayInformation({ reservationData, payData }: Props) {
   const [agreement, setAgreement] = useState(false); //동의여부
-
+  const { setPayData } = usePayData();
+  const router = useRouter();
   const handleSetAreement = (): boolean => {
     let state = false;
 
@@ -44,6 +43,18 @@ export default function PayInformation({
     return state;
   };
 
+  //결제하기 클릭 시
+  const handlePay = async () => {
+    const result = await farmReservation(reservationData);
+
+    if (result.status === "FAIL") {
+      alert(result.errorMessage);
+      return;
+    }
+
+    setPayData(result.result);
+    router.push("/reservation_completed");
+  };
   useEffect(() => {
     handleSetAreement;
   }, [reservationData]);

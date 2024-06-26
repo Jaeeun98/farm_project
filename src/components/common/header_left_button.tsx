@@ -4,10 +4,20 @@ import { usePathname } from "next/navigation";
 
 import MypageButton from "../ui/mypage_button";
 import LoginButton from "../ui/login_button";
+import { useEffect } from "react";
+import { getUserInfo } from "@/app/api/user";
 
 export default function HeaderLeftButton() {
   const { data: session } = useSession();
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleUserInfo = async () => {
+      const result = await getUserInfo();
+    };
+
+    handleUserInfo;
+  }, []);
 
   if (pathname === "/login") return <></>;
 

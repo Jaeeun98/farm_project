@@ -41,6 +41,7 @@ export default function Farm({ farmData }: Props) {
             icon="mypage"
             value={farmData.reservationParticipants}
           />
+
           <IconInputText icon="time" value={farmData.reservationTime} />
         </div>
       </div>

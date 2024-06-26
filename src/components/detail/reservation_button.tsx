@@ -5,7 +5,7 @@ interface Props {
 }
 
 //예약하기 버튼
-export default async function ReservationButton({ session }: Props) {
+export default function ReservationButton({ session }: Props) {
   const handleBtnClick = () => {
     if (!session) return alert("로그인 후 예약 가능합니다.");
   };

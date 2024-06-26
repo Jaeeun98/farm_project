@@ -7,9 +7,9 @@ import Unregister from "./unregister";
 
 export default async function Userinfo() {
   const result = await getUserInfo();
-  const userData = result.result;
+  const userData = result?.result;
 
-  if (result.status !== "SUCCESS") alert(result.errorMessage);
+  if (result?.status !== "SUCCESS") alert(result.errorMessage);
 
   return (
     <div className="flex justify-center flex-wrap text-center">

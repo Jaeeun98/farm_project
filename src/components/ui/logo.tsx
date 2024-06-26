@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import TextLogo from "./text_logo";
 
 export default function Logo() {

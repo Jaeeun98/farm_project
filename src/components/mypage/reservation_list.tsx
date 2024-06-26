@@ -11,10 +11,10 @@ export default async function ReservationList() {
     <div className="mt-12">
       <h2 className="text-[24px] font-semibold">예약 정보</h2>
       <div className="mt-6">
-        {result.result.length === 0 ? (
+        {result?.result.length === 0 ? (
           <NoReservation />
         ) : (
-          result.result.map((item: History) => (
+          result?.result.map((item: History) => (
             <Reservation key={item.reservationId} data={item} />
           ))
         )}

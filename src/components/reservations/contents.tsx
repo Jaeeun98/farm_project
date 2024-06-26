@@ -13,14 +13,15 @@ import PayInformation from "./pay_information";
 import { farmReservation, getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
 import BackAlertModal from "../common/back_alert_modal";
-import { usePayData } from "@/context/pay_context";
+
 import nextDate from "../common/nextDate";
 
 //예약확인 및 결제 컨텐츠
 export default function Contsnts() {
-  const { setPayData } = usePayData();
+  const [backAlertModal, setBackAlertModal] = useState(false);
+  const [initialized, setInitialized] = useState(false);
+
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   if (!searchParams) return;
 
@@ -31,10 +32,7 @@ export default function Contsnts() {
     amt: searchParams.get("amt") || "",
   };
 
-  const [initialized, setInitialized] = useState(false);
-
   const [farmData, setFarmData] = useState<null | FarmDetailData>(null);
-  const [backAlertModal, setBackAlertModal] = useState(false);
   const [reservationData, setReservationData] = useState({
     farmId,
     reservationName: "",
@@ -72,17 +70,16 @@ export default function Contsnts() {
     setFarmData(result);
   };
 
-  //결제하기 클릭 시
-  const handlePay = async () => {
-    const result = await farmReservation(reservationData);
+  const handleUserInfo = async () => {
+    const result = await getUserInfo();
+    const { userEmail, userName, userTel } = result.result;
 
-    if (result.status === "FAIL") {
-      alert(result.errorMessage);
-      return;
-    }
-
-    setPayData(result.result);
-    router.push("/reservation_completed");
+    setReservationData({
+      ...reservationData,
+      reservationName: userName,
+      reservationEmail: userEmail,
+      reservationTel: userTel,
+    });
   };
 
   const handlePopState = useCallback(() => {
@@ -100,30 +97,15 @@ export default function Contsnts() {
   //모달 close
   const backAlertModalClose = () => setBackAlertModal(false);
 
-  const handleUserInfo = async () => {
-    const result = await getUserInfo();
-    const { userEamil, userName, userTel } = result.result;
-
-    setReservationData({
-      ...reservationData,
-      reservationName: userName,
-      reservationEmail: userEamil,
-      reservationTel: userTel,
-    });
-  };
-
   useEffect(() => {
+    handleGetFarmDetailData();
+    handleUserInfo();
+
     if (!initialized) {
       history.pushState(null, "", location.href); // 초기 상태 푸시
       setInitialized(true);
     }
-
     window.addEventListener("popstate", handlePopState);
-  }, []);
-
-  useEffect(() => {
-    handleGetFarmDetailData();
-    handleUserInfo();
   }, []);
 
   if (!farmData) return <></>;
@@ -149,11 +131,7 @@ export default function Contsnts() {
               reservationData={reservationData}
             />
           </div>
-          <PayInformation
-            handlePay={handlePay}
-            reservationData={reservationData}
-            payData={payData}
-          />
+          <PayInformation reservationData={reservationData} payData={payData} />
         </div>
         {backAlertModal && (
           <BackAlertModal

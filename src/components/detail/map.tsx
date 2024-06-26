@@ -2,8 +2,6 @@
 
 import { GOOGL_MAP_KEY } from "@/utils/env";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
-import Image from "next/image";
-import CopyIcon from "../ui/copy_icon";
 import CopyButton from "../common/copy_button";
 
 interface Props {

@@ -1,7 +1,7 @@
 //axios 기본 설정
 import { getServerSession } from "next-auth";
 import axios from "axios";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { API_ADDR } from "@/utils/env";
@@ -22,7 +22,7 @@ export const authApiClient = axios.create({
   },
 });
 
-//토큰 저장
+//api 요청시, header에 토큰 저장
 authApiClient.interceptors.request.use(
   async (config) => {
     let session = await getSession();
@@ -40,16 +40,19 @@ authApiClient.interceptors.request.use(
   }
 );
 
-//401에러 발생시 로그인 페이지로 이동
+//api 응답
 authApiClient.interceptors.response.use(
   (response) => {
-    return response;
+    const res = response;
+    console.log("res", res);
+    return res;
   },
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      alert("세션이 만료되었습니다. 다시 로그인해 주세요.");
-      return;
-    }
+  async (error) => {
+    // const pathname = usePathname();
+
+    // if (pathname !== "/login")
+    signOut({ redirect: false });
+
     return Promise.reject(error);
   }
 );

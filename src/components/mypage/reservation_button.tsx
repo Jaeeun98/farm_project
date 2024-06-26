@@ -28,7 +28,6 @@ export default function ReservationButton({ text, id }: Props) {
   const [alertModal, setAlertModal] = useState(false);
 
   const handleFarmCancel = async () => {
-    if (text !== "예약취소") return;
     const result = await farmCancel(id);
 
     if (result.status === "SUCCESS") alert("예약이 취소되었습니다.");
@@ -41,12 +40,22 @@ export default function ReservationButton({ text, id }: Props) {
 
   return (
     <>
-      <button
-        onClick={cancelModalClose}
-        disabled={!(text === "예약취소")}
-        className={`w-[120px] h-[48px] rounded-[8px] ${buttonStyle(text)}`}>
-        {text}
-      </button>
+      <div className="flex">
+        <div
+          className={`cursor-default text-center pt-[11.5px] w-[120px] h-[48px] rounded-[8px] ${buttonStyle(
+            text
+          )}`}>
+          {text}
+        </div>
+        {text === "예약대기" && (
+          <button
+            className="ms-3 bg-point_color text-[#fff] rounded-lg w-[80px] h-[34px] text-[14px]"
+            onClick={cancelModalClose}>
+            예약취소
+          </button>
+        )}
+      </div>
+
       {alertModal && (
         <BackAlertModal
           text={"예약취소 하시겠습니까?"}

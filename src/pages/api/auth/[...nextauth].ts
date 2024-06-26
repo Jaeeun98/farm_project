@@ -1,4 +1,4 @@
-import { login } from "@/app/api/auth";
+import { getRefreshToken, login } from "@/app/api/auth";
 import { SECRET } from "@/utils/env";
 
 import NextAuth, { NextAuthOptions } from "next-auth";
@@ -21,7 +21,13 @@ export const authOptions: NextAuthOptions = {
           const res = await login(credentials);
           const { status, errorMessage, result } = res;
 
-          if (status === "SUCCESS") return result;
+          const user = {
+            accessToken: result.accessToken,
+            refreshToken: result.refreshTokenId,
+            id: result.userWebId,
+          };
+
+          if (status === "SUCCESS") return user;
           else {
             throw new Error(errorMessage || "Login failed");
           }
@@ -48,17 +54,10 @@ export const authOptions: NextAuthOptions = {
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken as string;
       }
-
       return token;
     },
 
-    async session({ session, token, user }) {
-      // console.log("session", session);
-      // console.log("token", token);
-      // console.log("user", user);
-      // session.user = {
-      //   accessToken: session.accessToken,
-      // };
+    async session({ session, token }) {
       session.user = {
         id: token.id,
         accessToken: token.accessToken,

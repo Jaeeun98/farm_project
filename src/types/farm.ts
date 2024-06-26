@@ -15,6 +15,9 @@ export interface FarmData {
   farmZip: string;
   reviewStar: string;
   reviewStarCnt: string;
+  farmEventDiscountRate: string;
+  farmEventDiscountOriginalAmt: string;
+  farm_event_dicount_YN: boolean;
 }
 
 export interface FarmDetailData {

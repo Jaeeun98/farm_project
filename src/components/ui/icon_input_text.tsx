@@ -21,6 +21,7 @@ export default function IconInputText({ icon, value }: Props) {
         defaultValue={value}
         disabled
       />
+      {icon === "mypage" && <span className="absolute right-3">명</span>}
     </div>
   );
 }

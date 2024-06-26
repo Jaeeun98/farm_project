@@ -52,8 +52,6 @@ export default function List({ rangeData }: Props) {
     }
   };
 
-  console.log("listData", listData);
-
   useEffect(() => {
     handleGetSearhData();
   }, [farmSearchData]);
@@ -64,11 +62,11 @@ export default function List({ rangeData }: Props) {
 
   return (
     <Suspense>
-      <ul className="w-full mt-10 flex gap-2 justify-between flex-wrap">
+      <ul className="w-full mt-10 flex gap-4 justify-between flex-wrap box-border ">
         {listData.map((item) => (
           <li
             key={item.farmId}
-            className="text-text_default flex w-[49.5%] border shadow-xl rounded-xl px-8 py-5 ">
+            className="text-text_default flex w-[49.5%] border shadow-xl rounded-xl px-8 py-5 box-border">
             <Link className="flex " href={`/detail/${item.farmId}`}>
               <Image
                 className="rounded-xl me-6"
@@ -77,22 +75,31 @@ export default function List({ rangeData }: Props) {
                 height={192}
                 alt="farm_iamge"
               />
-              <div className="w-[70%]">
-                <p className="text-text_sub">{item.farmKindNm}</p>
-                <p className="text-[24px] font-bold my-1">{item.farmName}</p>
-                <div className="flex items-center">
-                  <StarScore score={item.reviewStar} />
-                  <span className="text-[14px] text-text_sub">
-                    {item.reviewStarCnt}
-                  </span>
+              <div className="w-[525px]">
+                <div className="mb-12">
+                  <p className="text-text_sub">{item.farmKindNm}</p>
+                  <p className="text-[24px] font-bold my-1">{item.farmName}</p>
+                  <div className="flex items-center">
+                    <StarScore score={item.reviewStar} />
+                    <span className="text-[14px] text-text_sub">
+                      {item.reviewStarCnt}
+                    </span>
+                  </div>
+                  <div className="flex my-3 gap-4">
+                    <Addr addr={item.farmZip} />
+                    <Time time={"체험시간 두시간 "} />
+                  </div>
                 </div>
-                <div className="flex my-3 gap-4">
-                  <Addr addr={item.farmZip} />
-                  <Time time={"체험시간 두시간 "} />
+                <div className="flex justify-end gap-2 items-end">
+                  {item.farm_event_dicount_YN && (
+                    <p className={`text-text_sub text-[14px] line-through`}>
+                      {item.farmEventDiscountRate}
+                      {item.farmEventDiscountOriginalAmt}
+                    </p>
+                  )}
+
+                  <p className="text-[20px] font-bold"> {item.farmUseAmt}~</p>
                 </div>
-                <p className="text-right font-bold text-[20px] mt-7">
-                  {item.farmUseAmt}~
-                </p>
               </div>
             </Link>
           </li>

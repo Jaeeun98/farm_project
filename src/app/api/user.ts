@@ -1,8 +1,11 @@
+"use server";
+
 import { authApiClient } from ".";
 
 //유저 정보 가져오기
 export const getUserInfo = async () => {
   const response = await authApiClient.get(`/user/my-info`);
+  console.log(response);
   return response?.data;
 };
 

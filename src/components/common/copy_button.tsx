@@ -7,18 +7,29 @@ interface Props {
 }
 
 export default function CopyButton({ copyText }: Props) {
-  const writeClipboardText = useCallback(async () => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(copyText);
-        alert("복사되었습니다");
-      } catch (error) {
-        console.error("클립보드에 복사하는 데 실패했습니다:", error);
-      }
-    } else {
-      console.error("클립보드 API를 사용할 수 없습니다.");
-    }
-  }, [copyText]);
+  // const writeClipboardText = useCallback(async () => {
+  //   if (typeof navigator !== "undefined" && navigator.clipboard) {
+  //     try {
+  //       await navigator.clipboard.writeText(copyText);
+  //       alert("복사되었습니다");
+  //     } catch (error) {
+  //       console.error("클립보드에 복사하는 데 실패했습니다:", error);
+  //     }
+  //   } else {
+  //     console.error("클립보드 API를 사용할 수 없습니다.");
+  //   }
+  // }, [copyText]);
+
+  const writeClipboardText = () => {
+    const textarea = document.createElement("textarea");
+    document.body.appendChild(textarea);
+    textarea.value = copyText;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+
+    alert("복사되었습니다.");
+  };
 
   return (
     <button onClick={writeClipboardText} className="flex items-center">

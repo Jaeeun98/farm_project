@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import AuthContext from "@/context/auth_context";
+import AuthContext from "@/context/session_context";
 import { PayProvier } from "@/context/pay_context";
 import { FarmSearchProvier } from "@/context/farm_search_context";
+import SessionContext from "@/context/session_context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthContext>
+      <SessionContext>
         <PayProvier>
           <FarmSearchProvier>
             <body className={inter.className}>{children}</body>
           </FarmSearchProvier>
         </PayProvier>
-      </AuthContext>
+      </SessionContext>
     </html>
   );
 }
