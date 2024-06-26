@@ -63,48 +63,77 @@ export default function List({ rangeData }: Props) {
   return (
     <Suspense>
       <ul className="w-full mt-10 flex gap-4 justify-between flex-wrap box-border ">
-        {listData.map((item) => (
-          <li
-            key={item.farmId}
-            className="text-text_default flex w-[49.5%] border shadow-xl rounded-xl px-8 py-5 box-border">
-            <Link className="flex " href={`/detail/${item.farmId}`}>
-              <Image
-                className="rounded-xl me-6"
-                src={item.farmMainImageUrl}
-                width={280}
-                height={192}
-                alt="farm_iamge"
-              />
-              <div className="w-[525px]">
-                <div className="mb-12">
-                  <p className="text-text_sub">{item.farmKindNm}</p>
-                  <p className="text-[24px] font-bold my-1">{item.farmName}</p>
-                  <div className="flex items-center">
-                    <StarScore score={item.reviewStar} />
-                    <span className="text-[14px] text-text_sub">
-                      {item.reviewStarCnt}
-                    </span>
-                  </div>
-                  <div className="flex my-3 gap-4">
-                    <Addr addr={item.farmZip} />
-                    <Time time={"체험시간 두시간 "} />
-                  </div>
-                </div>
-                <div className="flex justify-end gap-2 items-end">
-                  {item.farm_event_dicount_YN && (
-                    <p className={`text-text_sub text-[14px] line-through`}>
-                      {item.farmEventDiscountRate}
-                      {item.farmEventDiscountOriginalAmt}
-                    </p>
-                  )}
-
-                  <p className="text-[20px] font-bold"> {item.farmUseAmt}~</p>
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
+        {listData.length === 0 ? (
+          <ListNoneBox />
+        ) : (
+          <ListBox listData={listData} />
+        )}
       </ul>
     </Suspense>
   );
 }
+
+const ListNoneBox = () => {
+  return (
+    <div className="flex justify-center items-center w-full mt-[15%] text-[24px] text-text_sub ">
+      <Image
+        src={"/images/icon/search.png"}
+        alt="search_icon"
+        width={30}
+        height={30}
+      />
+      <p className="ms-2">검색 데이터가 없습니다.</p>
+    </div>
+  );
+};
+
+interface ListBoxProps {
+  listData: FarmData[];
+}
+
+const ListBox = ({ listData }: ListBoxProps) => {
+  return (
+    <>
+      {listData.map((item) => (
+        <li
+          key={item.farmId}
+          className="text-text_default flex w-[49.5%] border shadow-xl rounded-xl px-8 py-5 box-border">
+          <Link className="flex " href={`/detail/${item.farmId}`}>
+            <Image
+              className="rounded-xl me-6"
+              src={item.farmMainImageUrl}
+              width={280}
+              height={192}
+              alt="farm_iamge"
+            />
+            <div className="w-[525px]">
+              <div className="mb-12">
+                <p className="text-text_sub">{item.farmKindNm}</p>
+                <p className="text-[24px] font-bold my-1">{item.farmName}</p>
+                <div className="flex items-center">
+                  <StarScore score={item.reviewStar} />
+                  <span className="text-[14px] text-text_sub">
+                    {item.reviewStarCnt}
+                  </span>
+                </div>
+                <div className="flex my-3 gap-4">
+                  <Addr addr={item.farmZip} />
+                  <Time time={"체험시간 두시간 "} />
+                </div>
+              </div>
+              <div className="flex justify-end gap-2 items-end">
+                {item.farm_event_dicount_YN && (
+                  <p className={`text-text_sub text-[14px] line-through`}>
+                    {item.farmEventDiscountRate}
+                    {item.farmEventDiscountOriginalAmt}
+                  </p>
+                )}
+                <p className="text-[20px] font-bold"> {item.farmUseAmt}~</p>
+              </div>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </>
+  );
+};
