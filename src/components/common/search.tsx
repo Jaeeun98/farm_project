@@ -48,6 +48,9 @@ export default function Search({ detail = false, farmData = "" }: Props) {
     router.push(`/search_list?${queryString}`);
   };
 
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) =>
+    e.key === "Enter" && handleSearch();
+
   useEffect(() => {
     setSearchData({
       ...searchData,
@@ -67,6 +70,7 @@ export default function Search({ detail = false, farmData = "" }: Props) {
         />
         <input
           className={InputStyle}
+          onKeyDown={handleEnter}
           type="search"
           placeholder="검색"
           name="farmName"
