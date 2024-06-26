@@ -5,7 +5,6 @@ import { authApiClient } from ".";
 //유저 정보 가져오기
 export const getUserInfo = async () => {
   const response = await authApiClient.get(`/user/my-info`);
-  console.log(response);
   return response?.data;
 };
 
@@ -23,7 +22,6 @@ export const userFarmHistory = async () => {
 
 //예약 취소
 export const farmCancel = async (reservationId: string) => {
-  console.log(authApiClient);
   const response = await authApiClient.put(`/reservation/farm-cancel`, {
     reservationId,
   });

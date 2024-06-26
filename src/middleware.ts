@@ -8,13 +8,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(`http://localhost:3000/login`);
   }
 
-  // if (
-  //   request.nextUrl.pathname.startsWith("/admin") &&
-  //   session.user.level !== "admin"
-  // ) {
-  //   return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_HOST}/`);
-  // }
-
   return NextResponse.next();
 }
 

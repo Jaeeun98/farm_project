@@ -44,13 +44,9 @@ authApiClient.interceptors.request.use(
 authApiClient.interceptors.response.use(
   (response) => {
     const res = response;
-    console.log("res", res);
     return res;
   },
   async (error) => {
-    // const pathname = usePathname();
-
-    // if (pathname !== "/login")
     signOut({ redirect: false });
 
     return Promise.reject(error);

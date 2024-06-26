@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Suspense } from "react";
 import { getUserInfo } from "@/app/api/user";
@@ -10,7 +10,7 @@ import BackButton from "@/components/ui/back_button";
 import Time from "./time";
 import BookerInformation from "./booker_information";
 import PayInformation from "./pay_information";
-import { farmReservation, getFarmDetailData } from "@/app/api/farm";
+import { getFarmDetailData } from "@/app/api/farm";
 import { FarmDetailData } from "@/types/farm";
 import BackAlertModal from "../common/back_alert_modal";
 
@@ -90,7 +90,6 @@ export default function Contsnts() {
   const handleBack = () => {
     setBackAlertModal(false);
     history.back();
-    history.back();
     window.removeEventListener("popstate", handlePopState);
   };
 
@@ -98,14 +97,16 @@ export default function Contsnts() {
   const backAlertModalClose = () => setBackAlertModal(false);
 
   useEffect(() => {
-    handleGetFarmDetailData();
-    handleUserInfo();
-
     if (!initialized) {
       history.pushState(null, "", location.href); // 초기 상태 푸시
       setInitialized(true);
     }
     window.addEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    handleGetFarmDetailData();
+    handleUserInfo();
   }, []);
 
   if (!farmData) return <></>;

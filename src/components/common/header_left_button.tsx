@@ -14,8 +14,7 @@ export default function HeaderLeftButton() {
   const handleUserInfo = async () => {
     if (!session) return;
     try {
-      const result = await getUserInfo();
-      console.log(result);
+      await getUserInfo();
     } catch (error) {
       alert("로그인이 만료되었습니다.");
     }
