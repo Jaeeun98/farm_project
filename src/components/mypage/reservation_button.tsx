@@ -49,7 +49,7 @@ export default function ReservationButton({ text, id }: Props) {
         </div>
         {text === "예약대기" && (
           <button
-            className="ms-3 bg-point_color text-[#fff] rounded-lg w-[80px] h-[34px] text-[14px]"
+            className="ms-3 bg-point_color text-[#fff] rounded-lg w-[120px] h-[48px]"
             onClick={cancelModalClose}>
             예약취소
           </button>
