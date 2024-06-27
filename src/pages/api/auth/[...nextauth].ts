@@ -16,24 +16,20 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials): Promise<any> {
         if (!credentials) return null;
+        const res = await login(credentials);
+        const { status, result } = res;
 
-        try {
-          const res = await login(credentials);
-          const { status, errorMessage, result } = res;
-
+        if (status === "SUCCESS") {
           const user = {
             accessToken: result.accessToken,
             refreshToken: result.refreshTokenId,
             id: result.userWebId,
             accessExpires: Math.floor(Date.now() / 1000) + 4 * 60,
           };
-
-          if (status === "SUCCESS") return user;
-          else {
-            throw new Error(errorMessage || "Login failed");
-          }
-        } catch (error) {
-          throw new Error(error as string);
+          return user;
+        } else {
+          console.log(res);
+          throw new Error(res.errorMessage);
         }
       },
     }),
