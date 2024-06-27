@@ -17,8 +17,8 @@ const title = `my-2 text-[20px] font-bold`;
 
 export default function Reservation({ data }: Props) {
   return (
-    <div className="mb-6 border h-[248px] text-text_default flex shadow-lg rounded-box_rounded px-8 py-6 gap-6">
-      <div className="flex gap-8">
+    <div className="mb-6 border h-[248px] text-text_default flex justify-between shadow-lg rounded-box_rounded px-8 py-6 gap-6">
+      <div className="flex items-center gap-8 w-[70%]">
         <Image
           className="rounded-box_rounded"
           src={data.farmMainImageUrl}
@@ -49,23 +49,25 @@ export default function Reservation({ data }: Props) {
           </div>
         </div>
       </div>
-      <div className="border-s ps-16 flex justify-between w-[35%]">
-        <div className="flex items-center">
-          <div>
-            <p className="text-text_sub">예약 정보</p>
-            <p className={title}>{data.reservationName}</p>
-            <div className="flex gap-6">
-              <Call phoneNumber={data.reservationTel} />
-              <Email email={data.reservationEmail} />
+      <div className="border-s flex justify-between w-[30%]">
+        <div className=" ps-16 flex justify-between w-full">
+          <div className="flex items-center">
+            <div>
+              <p className="text-text_sub">예약 정보</p>
+              <p className={title}>{data.reservationName}</p>
+              <div className="flex gap-6">
+                <Call phoneNumber={data.reservationTel} />
+                <Email email={data.reservationEmail} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-wrap w-[140px] content-between justify-end">
-          <ReservationButton
-            text={data.reservationStatusNm}
-            id={data.reservationId}
-          />
-          <p className="text-[28px] font-bold">{data.farmUseAmt}</p>
+          <div className="flex flex-wrap w-[140px] content-between justify-end">
+            <ReservationButton
+              text={data.reservationStatusNm}
+              id={data.reservationId}
+            />
+            <p className="text-[28px] font-bold">{data.farmUseAmt}</p>
+          </div>
         </div>
       </div>
     </div>
