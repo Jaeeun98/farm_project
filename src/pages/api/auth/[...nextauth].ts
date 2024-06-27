@@ -24,9 +24,9 @@ export const authOptions: NextAuthOptions = {
             accessToken: result.accessToken,
             refreshToken: result.refreshTokenId,
             id: result.userWebId,
-            accessExpires: Math.floor(Date.now() / 1000) + 60,
+            // accessExpires: Math.floor(Date.now() / 1000) + 60,
 
-            // accessExpires: Math.floor(Date.now() / 1000) + 4 * 60,
+            accessExpires: Math.floor(Date.now() / 1000) + 59 * 60,
           };
           return user;
         } else {
@@ -37,9 +37,9 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: "jwt",
-    maxAge: 60,
+    // maxAge: 60,
 
-    // maxAge: 4 * 60,
+    maxAge: 59 * 60,
   },
   jwt: {
     secret: SECRET,
