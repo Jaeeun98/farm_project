@@ -40,15 +40,14 @@ authApiClient.interceptors.request.use(
   }
 );
 
-//api 응답
-authApiClient.interceptors.response.use(
-  (response) => {
-    const res = response;
-    return res;
-  },
-  async (error) => {
-    signOut({ redirect: false });
-
-    return Promise.reject(error);
-  }
-);
+// //api 응답
+// authApiClient.interceptors.response.use(
+//   (response) => {
+//     const res = response;
+//     return res;
+//   },
+//   async (error) => {
+//     // signOut();
+//     return Promise.reject(error);
+//   }
+// );

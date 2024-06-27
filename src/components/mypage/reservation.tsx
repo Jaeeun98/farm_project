@@ -20,7 +20,7 @@ export default function Reservation({ data }: Props) {
     <div className="mb-6 border h-[248px] text-text_default flex justify-between shadow-lg rounded-box_rounded px-8 py-6 gap-6">
       <div className="flex items-center gap-8 w-[70%]">
         <Image
-          className="rounded-box_rounded"
+          className="rounded-box_rounded h-[192px]"
           src={data.farmMainImageUrl}
           alt="farm_img"
           width={353}
@@ -50,7 +50,7 @@ export default function Reservation({ data }: Props) {
         </div>
       </div>
       <div className="border-s flex justify-between w-[30%]">
-        <div className=" ps-16 flex justify-between w-full">
+        <div className=" ps-10 flex justify-between w-full">
           <div className="flex items-center">
             <div>
               <p className="text-text_sub">예약 정보</p>

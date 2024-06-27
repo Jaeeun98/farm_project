@@ -30,9 +30,17 @@ export default function ReservationButton({ text, id }: Props) {
   const router = useRouter();
 
   const handleFarmCancel = async () => {
-    const result = await farmCancel(id);
+    console.log("dddd");
 
-    if (result.status === "SUCCESS") {
+    const result = await farmCancel(id);
+    console.log("dd");
+    console.log(result);
+    console.log(result?.status);
+
+    if (result.status === 401 || result.status === 500) {
+      alert("로그인 인증이 만료되었습니다.");
+      router.push("/login");
+    } else if (result.status === "SUCCESS") {
       alert("예약이 취소되었습니다.");
       router.refresh();
     } else alert(result.errorMessage);
