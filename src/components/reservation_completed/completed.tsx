@@ -24,7 +24,7 @@ export default function Completed({ payData }: Props) {
         <p className="me-4 text-[20px]">예약번호</p>
         <span className="flex text-point_color">
           <p className="font-bold text-[20px] me-2">{payData.reservationId}</p>
-          <CopyButton copyText={"2222222222"} />
+          <CopyButton copyText={payData.reservationId} />
         </span>
       </div>
     </div>
