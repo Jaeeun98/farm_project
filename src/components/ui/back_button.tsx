@@ -10,7 +10,10 @@ interface Props {
 export default function BackButton({ text }: Props) {
   const router = useRouter();
 
-  const handleBack = () => router.back();
+  const handleBack = () => {
+    if (text === "예약 완료") router.push("/");
+    else router.back();
+  };
 
   return (
     <button onClick={handleBack} className="flex gap-2 items-center my-6">
