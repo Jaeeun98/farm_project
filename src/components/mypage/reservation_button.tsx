@@ -1,7 +1,8 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { farmCancel } from "@/app/api/user";
-import { useState } from "react";
 import BackAlertModal from "../common/back_alert_modal";
 
 interface Props {
@@ -26,12 +27,15 @@ const buttonStyle = (text: string) => {
 
 export default function ReservationButton({ text, id }: Props) {
   const [alertModal, setAlertModal] = useState(false);
+  const router = useRouter();
 
   const handleFarmCancel = async () => {
     const result = await farmCancel(id);
 
-    if (result.status === "SUCCESS") alert("예약이 취소되었습니다.");
-    else alert(result.errorMessage);
+    if (result.status === "SUCCESS") {
+      alert("예약이 취소되었습니다.");
+      router.refresh();
+    } else alert(result.errorMessage);
 
     cancelModalClose();
   };
