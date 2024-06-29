@@ -27,6 +27,10 @@ export default function Inputs() {
     });
   };
 
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(e.key);
+    e.key === "Enter" && handleLogin();
+  };
   const handleLogin = async () => {
     const result = await signIn("credentials", {
       redirect: false,
@@ -46,19 +50,20 @@ export default function Inputs() {
   return (
     <div>
       <input
-        onChange={(e) => inputChange(e)}
+        onChange={inputChange}
         className={`${input_style} border mt-10`}
         type="text"
         name="userWebId"
-        id=""
         placeholder="아이디 입력"
+        onKeyDown={handleEnter}
       />
       <input
-        onChange={(e) => inputChange(e)}
+        onChange={inputChange}
         className={`${input_style} border`}
         type="password"
         name="userWebPw"
         placeholder="비밀번호 입력"
+        onKeyDown={handleEnter}
       />
       <button
         onClick={handleLogin}
