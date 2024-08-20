@@ -6,7 +6,7 @@
 
 
 
-
+   
 ## 프로젝트 소개 
 
 - 전국의 농장 및 목장 체험을 연결하여 소비자들이 손쉽게 예약할 수 있는 웹 사이트
@@ -27,13 +27,12 @@
 
 ## 개발환경 & 기술스택 
 
-기술스택 : Next.js, Typescript, Tailwind, NextAuth, ContextAPI
-협업 툴 : Discord, Swagger, Github
-디자인 : Figma
+- 기술스택 : Next.js, Typescript, Tailwind, NextAuth, ContextAPI
+  - Next.js: 사용자 중심의 웹 사이트이기 떄문에 검색엔진 최적화와 빠른 로딩에 좋은 Next.js를 선택
+  - ContextAPI: 복잡한 상태를 관리해야 하는 것이 아니였기에 간단한 구현을 위해 사용 
+- 협업 툴 : Discord, Swagger, Github
+- 디자인 : Figma
 
-
-- Next.js: 사용자 중심의 웹 사이트이기 떄문에 검색엔진 최적화와 빠른 로딩에 좋은 Next.js를 선택
-- ContextAPI: 복잡한 상태를 관리해야 하는 것이 아니였기에 간단한 구현을 위해 사용  
 
 
 
@@ -41,6 +40,7 @@
 
 ## 프로젝트 구조 
 
+```
 project-root/
 ├── .gitattributes
 ├── .gitignore
@@ -97,11 +97,11 @@ project-root/
 │   ├── utils/
 │   └── middleware.ts
 
+```
 
 
 
-
-회고록: https://coding-je.com/entry/%ED%9A%8C%EA%B3%A0%EB%A1%9D-%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%9C%EC%9A%A9-%EC%B0%BD%EC%97%85%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0
+회고록: [농림축산식품부 공공데이터 활용 창업경진대회 후기](https://coding-je.com/entry/%ED%9A%8C%EA%B3%A0%EB%A1%9D-%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%9C%EC%9A%A9-%EC%B0%BD%EC%97%85%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0)
 
 
 
